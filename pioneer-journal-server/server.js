@@ -4,28 +4,11 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3001;
-
-// Google API Key - use environment variable or fallback to hardcoded key
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyBo7bNwKgmvlw103jp094_DxiSPsLsWcis';
-
-// Get metadata file path - handle both local and Render.com paths
-const getMetadataPath = () => {
-  // Check if running on Render
-  if (process.env.RENDER) {
-    return path.join(__dirname, 'metadata.json');
-  }
-  // Local development
-  return path.join(__dirname, 'metadata.json');
-};
+const PORT = 3001;
 
 // Enable CORS with specific origins
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'http://192.168.11.183:3000', 
-    'https://pioneer-journal.netlify.app'
-  ],
+  origin: ['http://localhost:3000', 'http://192.168.11.183:3000', 'https://pioneer-journal.netlify.app'],
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS']
 }));
@@ -35,10 +18,10 @@ app.get('/', (req, res) => {
   res.send('PDF Proxy Server is running');
 });
 
-// Metadata endpoint
+// NEW: Metadata endpoint
 app.get('/metadata', (req, res) => {
   try {
-    const metadataPath = getMetadataPath();
+    const metadataPath = process.env.METADATA_PATH || path.join(__dirname, 'metadata.json');
     
     // Check if the file exists
     if (fs.existsSync(metadataPath)) {
@@ -46,7 +29,7 @@ app.get('/metadata', (req, res) => {
       res.json(metadata);
     } else {
       // Return empty object if file doesn't exist
-      console.error('metadata.json file not found at path:', metadataPath);
+      console.error('metadata.json file not found');
       res.json({});
     }
   } catch (error) {
@@ -82,16 +65,12 @@ app.get('/sample-pdf', async (req, res) => {
 app.get('/list/:folderId', async (req, res) => {
   try {
     const { folderId } = req.params;
-    
-    if (!GOOGLE_API_KEY) {
-      console.error('Google API key is missing');
-      return res.status(500).json({ error: 'Server configuration error' });
-    }
+    const apiKey = 'AIzaSyBo7bNwKgmvlw103jp094_DxiSPsLsWcis';
     
     console.log(`Listing files in folder: ${folderId}`);
     
     // Direct API call WITH REFERER HEADER - this is the critical fix
-    const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${GOOGLE_API_KEY}`;
+    const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`;
     
     const response = await axios.get(url, {
       headers: {
@@ -104,16 +83,9 @@ app.get('/list/:folderId', async (req, res) => {
     res.json(response.data);
   } catch (error) {
     console.error('Error listing files:', error.message);
-    
-    // More detailed error logging
     if (error.response) {
-      console.error('API error details:', error.response.status, JSON.stringify(error.response.data));
-      return res.status(error.response.status).json({ error: error.response.data });
-    } else if (error.request) {
-      console.error('No response received from API');
-      return res.status(500).json({ error: 'No response received from Google Drive API' });
+      console.error('API error details:', JSON.stringify(error.response.data));
     }
-    
     res.status(500).json({ error: 'Failed to list files', details: error.message });
   }
 });
@@ -128,15 +100,11 @@ app.get('/pdf/:fileId', async (req, res) => {
       return res.redirect('/sample-pdf');
     }
     
-    if (!GOOGLE_API_KEY) {
-      console.error('Google API key is missing');
-      return res.status(500).json({ error: 'Server configuration error' });
-    }
-    
     console.log(`Fetching PDF with ID: ${fileId}`);
+    const apiKey = 'AIzaSyBo7bNwKgmvlw103jp094_DxiSPsLsWcis';
     
     // Use the correct API endpoint WITH REFERER HEADER - this is the critical fix
-    const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${GOOGLE_API_KEY}`;
+    const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${apiKey}`;
     
     const response = await axios({
       method: 'GET',
@@ -158,20 +126,16 @@ app.get('/pdf/:fileId', async (req, res) => {
     res.send(response.data);
   } catch (error) {
     console.error('Error fetching PDF:', error.message);
-    
     if (error.response) {
       console.error('Status:', error.response.status);
-      console.error('Details:', error.response.data);
     }
-    
     res.status(500).send('Error fetching PDF file');
   }
 });
 
-// Start server
-app.listen(PORT, () => {
+// Listen on all interfaces (0.0.0.0) to be accessible on the network
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`PDF Proxy Server running on port ${PORT}`);
-  console.log(`Server environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Accessible at http://localhost:${PORT}`);
+  console.log(`Also accessible at http://192.168.11.183:${PORT}`);
 });
-
-module.exports = app; // Export for testing purposes
