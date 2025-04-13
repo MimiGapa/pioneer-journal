@@ -7,5 +7,5 @@ export default defineConfig({
     port: 3000,
     host: true
   },
-  base: '/pioneer-journal/' // Add this line for GitHub Pages deployment
+  base: '/pioneer-journal/' // Required for GitHub Pages
 });

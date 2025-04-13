@@ -4,17 +4,13 @@
   <meta charset="utf-8">
   <title>The Pioneer Journal of Multidisciplinary Research</title>
   <script>
-    const pathSegmentsToKeep = 1;
-    const l = window.location;
-    
-    // Redirect to the index.html with proper paths in URL
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
+    // SPA routing fix for GitHub Pages
+    const path = window.location.pathname;
+    const repo = '/pioneer-journal';
+    if (path.indexOf(repo) === 0) {
+      sessionStorage.setItem('redirect', path.slice(repo.length));
+      window.location.replace(repo + '/');
+    }
   </script>
 </head>
 <body>

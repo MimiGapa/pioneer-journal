@@ -11,6 +11,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
     <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
     
+    <script>
+      // Handle SPA redirects
+      (function() {
+        const redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          const cleanRedirect = redirect === '/' ? '' : redirect;
+          history.replaceState(null, null, cleanRedirect);
+        }
+      })();
+    </script>
+    
     <!-- GitHub Pages SPA routing fix -->
     <script type="text/javascript">
       // Single-page app routing for GitHub Pages
