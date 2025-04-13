@@ -14,8 +14,6 @@ const BASE_URL = window.location.hostname === 'localhost'
   ? '/' 
   : '/pioneer-journal/';
 
-// Make sure any internal links use this BASE_URL
-
 // Cached metadata to avoid repeated fetches
 let papersMetadata = null;
 
@@ -58,6 +56,15 @@ export async function listPapers(strand) {
     
     if (!response.ok) {
       console.error(`API returned status ${response.status}`);
+      // Try to get more error details
+      try {
+        const errorData = await response.json();
+        console.error('Error details:', errorData);
+      } catch (e) {
+        // If can't parse JSON, just log text
+        const text = await response.text();
+        console.error('Error response:', text);
+      }
       return [];
     }
     
