@@ -1,4 +1,4 @@
-const PROXY_URL = 'http://192.168.11.183:3001';
+const PROXY_URL = 'https://pioneer-journal-api.onrender.com';
 
 const FOLDER_IDS = {
   stem: '19qKKLreTu33c_F5Ki1W88Feva5xC9A8K',
