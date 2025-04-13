@@ -8,8 +8,9 @@ const PORT = 3001;
 
 // Enable CORS with specific origins
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://pioneer-journal.netlify.app'],
-  methods: ['GET']
+  origin: ['http://localhost:3000', 'http://192.168.11.183:3000', 'https://pioneer-journal.netlify.app'],
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS']
 }));
 
 // Root endpoint
@@ -17,7 +18,7 @@ app.get('/', (req, res) => {
   res.send('PDF Proxy Server is running');
 });
 
-// Metadata endpoint
+// NEW: Metadata endpoint
 app.get('/metadata', (req, res) => {
   try {
     const metadataPath = path.join(__dirname, 'metadata.json');
@@ -27,8 +28,9 @@ app.get('/metadata', (req, res) => {
       const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
       res.json(metadata);
     } else {
+      // Return empty object if file doesn't exist
       console.error('metadata.json file not found');
-      res.status(404).json({ error: 'Metadata file not found' });
+      res.json({});
     }
   } catch (error) {
     console.error('Error reading metadata:', error);
@@ -63,11 +65,11 @@ app.get('/sample-pdf', async (req, res) => {
 app.get('/list/:folderId', async (req, res) => {
   try {
     const { folderId } = req.params;
-    const apiKey = 'AIzaSyBo7bNwKgmvlw103jp094_DxiSPsLsWcis'; // Should be in env var
+    const apiKey = 'AIzaSyBo7bNwKgmvlw103jp094_DxiSPsLsWcis';
     
     console.log(`Listing files in folder: ${folderId}`);
     
-    // Add a referer header to satisfy API key restrictions
+    // Direct API call WITH REFERER HEADER - this is the critical fix
     const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`;
     
     const response = await axios.get(url, {
@@ -81,17 +83,10 @@ app.get('/list/:folderId', async (req, res) => {
     res.json(response.data);
   } catch (error) {
     console.error('Error listing files:', error.message);
-    
-    // More detailed error logging
     if (error.response) {
-      console.error('API error details:', error.response.status, JSON.stringify(error.response.data));
-      return res.status(error.response.status).json({ error: error.response.data });
-    } else if (error.request) {
-      console.error('No response received from API');
-      return res.status(500).json({ error: 'No response received from Google Drive API' });
+      console.error('API error details:', JSON.stringify(error.response.data));
     }
-    
-    res.status(500).json({ error: 'Failed to list files', message: error.message });
+    res.status(500).json({ error: 'Failed to list files', details: error.message });
   }
 });
 
@@ -106,9 +101,9 @@ app.get('/pdf/:fileId', async (req, res) => {
     }
     
     console.log(`Fetching PDF with ID: ${fileId}`);
-    const apiKey = 'AIzaSyBo7bNwKgmvlw103jp094_DxiSPsLsWcis'; // Should be in env var
+    const apiKey = 'AIzaSyBo7bNwKgmvlw103jp094_DxiSPsLsWcis';
     
-    // Use the correct API endpoint with referer header
+    // Use the correct API endpoint WITH REFERER HEADER - this is the critical fix
     const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media&key=${apiKey}`;
     
     const response = await axios({
@@ -131,16 +126,9 @@ app.get('/pdf/:fileId', async (req, res) => {
     res.send(response.data);
   } catch (error) {
     console.error('Error fetching PDF:', error.message);
-    
     if (error.response) {
       console.error('Status:', error.response.status);
-      console.error('Details:', JSON.stringify(error.response.data));
-      return res.status(error.response.status).json({ 
-        error: 'Error fetching PDF file',
-        details: typeof error.response.data === 'string' ? error.response.data : 'See server logs'
-      });
     }
-    
     res.status(500).send('Error fetching PDF file');
   }
 });
