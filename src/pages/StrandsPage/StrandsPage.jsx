@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getMetadata } from '../../utils/driveService';
 import './StrandsPage.css';
 
 function StrandsPage() {
+  const [counts, setCounts] = useState({});
+  const [loading, setLoading] = useState(true);
+  
+  // Fetch metadata and calculate counts
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const metadata = await getMetadata();
+        const strandCounts = {};
+        
+        // Count papers per strand
+        Object.values(metadata).forEach(paper => {
+          if (!paper.section) return;
+          
+          const strand = paper.section.split(' ')[0]; // Extract strand name from section
+          strandCounts[strand] = (strandCounts[strand] || 0) + 1;
+        });
+        
+        setCounts(strandCounts);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching metadata:", error);
+        setLoading(false);
+      }
+    }
+    
+    fetchData();
+  }, []);
+
   const strands = [
     {
       id: 'stem',
@@ -58,6 +88,11 @@ function StrandsPage() {
           >
             <div className="strand-banner" style={{ backgroundColor: strand.color }}>
               <h2>{strand.id.toUpperCase()}</h2>
+              {!loading && (
+                <span className="paper-count">
+                  {counts[strand.id.toUpperCase()] || 0} papers
+                </span>
+              )}
             </div>
             <div className="strand-info">
               <h3>{strand.name}</h3>

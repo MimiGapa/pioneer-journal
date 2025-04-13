@@ -9,7 +9,12 @@ const FOLDER_IDS = {
   afa: '14EyOaAQ2c-G4C942sbk8gnXtxlO4ViCG'
 };
 
-// List papers from a specific strand folder
+// Add near the top of your driveService.jsx file
+const BASE_URL = window.location.hostname === 'localhost' 
+  ? '/' 
+  : '/pioneer-journal/';
+
+// Make sure any internal links use this BASE_URL
 
 // Cached metadata to avoid repeated fetches
 let papersMetadata = null;

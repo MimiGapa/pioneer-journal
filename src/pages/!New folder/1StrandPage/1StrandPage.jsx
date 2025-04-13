@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { listPapers, getMetadata } from '../../utils/driveService';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import BackToTop from '../../components/BackToTop/BackToTop';
 import './StrandPage.css';
 
 function StrandPage() {
@@ -10,22 +11,13 @@ function StrandPage() {
   const [metadata, setMetadata] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showFeatured, setShowFeatured] = useState(true);
-  const [sortDirection, setSortDirection] = useState('asc'); // 'asc' or 'desc'
-  const [totalCount, setTotalCount] = useState(0); // Total paper count
-  
-  // Define breadcrumbs
-  const breadcrumbItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Strands', path: '/strands' },
-    { label: strandId.toUpperCase(), path: `/strand/${strandId}` }
-  ];
   
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
         
+        // Fetch papers and metadata in parallel
         const [papersList, metadataObj] = await Promise.all([
           listPapers(strandId),
           getMetadata()
@@ -44,31 +36,20 @@ function StrandPage() {
     fetchData();
   }, [strandId]);
   
-  // Calculate total count separately in useEffect
-  useEffect(() => {
-    if (papers.length === 0) {
-      setTotalCount(metadata.sample ? 1 : 0);
-    } else {
-      setTotalCount(papers.length);
-    }
-  }, [papers, metadata]);
-  
-  // Toggle sort direction
-  const toggleSortDirection = () => {
-    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-  };
-  
-  // Group papers by section and apply sorting
+  // Group papers by section
   const getPapersBySection = () => {
     const sections = {};
     const strandPrefix = strandId.toUpperCase();
+    
+    // Default section if metadata doesn't specify one
     const defaultSection = `${strandPrefix} 1`;
     
-    // Process test sample or handle empty papers
+    // Process test sample separately
     if (papers.length === 0) {
       const sampleMeta = metadata.sample || {};
       const sampleSection = sampleMeta.section || defaultSection;
       
+      // Initialize the section if not exists
       if (!sections[sampleSection]) {
         sections[sampleSection] = [];
       }
@@ -82,17 +63,20 @@ function StrandPage() {
       return sections;
     }
     
-    // Group papers by section
+    // Group real papers by section
     papers.forEach(paper => {
       const fileId = paper.id;
       const paperMeta = metadata[fileId] || {};
       
+      // Get section or use default
       const section = paperMeta.section || defaultSection;
       
+      // Initialize the section if not exists
       if (!sections[section]) {
         sections[section] = [];
       }
       
+      // Add paper to its section
       sections[section].push({
         id: fileId,
         name: paper.name,
@@ -100,31 +84,15 @@ function StrandPage() {
       });
     });
     
-    // Sort papers in each section
-    Object.keys(sections).forEach(sectionName => {
-      sections[sectionName].sort((a, b) => {
-        // First check featured status if checkbox is checked
-        if (showFeatured) {
-          const aFeatured = a.metadata.featured;
-          const bFeatured = b.metadata.featured;
-          
-          if (aFeatured && !bFeatured) return -1;
-          if (!aFeatured && bFeatured) return 1;
-        }
-        
-        // Then sort alphabetically by title
-        const aTitle = (a.metadata.title || a.name).replace(/\.pdf$/i, '');
-        const bTitle = (b.metadata.title || b.name).replace(/\.pdf$/i, '');
-        
-        // Apply the current sort direction
-        return sortDirection === 'asc' 
-          ? aTitle.localeCompare(bTitle) 
-          : bTitle.localeCompare(aTitle);
-      });
-    });
-    
     return sections;
   };
+  
+  // Define breadcrumbs for current path
+  const breadcrumbItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Strands', path: '/strands' },
+    { label: strandId.toUpperCase(), path: `/strand/${strandId}` }
+  ];
   
   const strandInfo = {
     'stem': { 
@@ -153,21 +121,24 @@ function StrandPage() {
     },
   }[strandId.toLowerCase()] || { name: strandId.toUpperCase(), color: '#333333' };
 
-  // Paper card component
+  // Create a paper card component for consistency
   const PaperCard = ({ paper, strandId }) => {
+    // Get metadata or use fallbacks
     const paperMeta = paper.metadata || {};
+    
+    // Clean title - use metadata title or filename without extension
     const title = paperMeta.title || paper.name.replace(/\.pdf$/i, '');
+    
+    // Get other metadata with fallbacks
     const authors = paperMeta.authors || "Author information unavailable";
     const abstract = paperMeta.abstract || "Abstract not available for this research.";
-    const isFeatured = paperMeta.featured;
     
     return (
-      <div className={`paper-card ${isFeatured && showFeatured ? 'featured-paper' : ''}`}>
+      <div className="paper-card">
         <div className="paper-icon">
-          <i className={`fas ${isFeatured ? 'fa-award' : 'fa-file-alt'}`}></i>
+          <i className="fas fa-file-alt"></i>
         </div>
         <div className="paper-info">
-          {isFeatured && showFeatured && <div className="featured-badge">Notable</div>}
           <h3>{title}</h3>
           <p className="paper-authors">{authors}</p>
           <p className="paper-abstract-preview">
@@ -189,35 +160,15 @@ function StrandPage() {
 
   return (
     <div className="strand-page">
+      {/* Breadcrumb navigation */}
       <Breadcrumbs items={breadcrumbItems} />
       
       <div className="strand-header" style={{ backgroundColor: strandInfo.color }}>
         <h2>{strandId.toUpperCase()}</h2>
         <p>{strandInfo.name} Research Papers</p>
-        {!loading && <div className="strand-total-count">{totalCount} Total Papers</div>}
       </div>
       
       <div className="strand-content">
-        <div className="strand-controls">
-          <label className="featured-checkbox">
-            <input 
-              type="checkbox" 
-              checked={showFeatured} 
-              onChange={() => setShowFeatured(!showFeatured)}
-            />
-            <span>Showcase Notable Research Papers</span>
-          </label>
-          
-          <button 
-            className="sort-button"
-            onClick={toggleSortDirection}
-            title={sortDirection === 'asc' ? 'Sort Z-A' : 'Sort A-Z'}
-          >
-            Sort {sortDirection === 'asc' ? 'A-Z' : 'Z-A'}
-            <i className={`fas fa-sort-alpha-${sortDirection === 'asc' ? 'down' : 'up'}`}></i>
-          </button>
-        </div>
-        
         {loading ? (
           <div className="loading">Loading research papers...</div>
         ) : error ? (
@@ -231,10 +182,7 @@ function StrandPage() {
           <div className="paper-sections">
             {sectionNames.map(sectionName => (
               <div key={sectionName} className="paper-section">
-                <h2 className="section-heading">
-                  {sectionName}
-                  <span className="section-count">({sectionedPapers[sectionName].length} papers)</span>
-                </h2>
+                <h2 className="section-heading">{sectionName}</h2>
                 <div className="papers-grid">
                   {sectionedPapers[sectionName].map(paper => (
                     <PaperCard 
@@ -249,6 +197,9 @@ function StrandPage() {
           </div>
         )}
       </div>
+      
+      {/* Back to top button */}
+      <BackToTop />
     </div>
   );
 }
