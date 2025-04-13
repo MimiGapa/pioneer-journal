@@ -1,0 +1,86 @@
+.strands-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.strands-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.strands-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.strands-header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.strands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.strand-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.strand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.strand-banner {
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.strand-banner h2 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.strand-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.strand-info h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.strand-info p {
+  margin: 0 0 1.5rem 0;
+  color: #666;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.strand-link {
+  align-self: flex-start;
+  color: #1565c0;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.strand-card:hover .strand-link {
+  transform: translateX(5px);
+}

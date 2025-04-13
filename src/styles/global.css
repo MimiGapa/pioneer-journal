@@ -1,0 +1,81 @@
+/* Global styles */
+:root {
+  /* Brand colors */
+  --primary-color: #0a2463; /* Navy blue from PJ logo */
+  --secondary-color: #e7ecef; /* Light blue background */
+  --accent-color: #3C7B15; /* Green from school logo */
+  
+  /* Strand colors */
+  --stem-color: #800000; /* Maroon */
+  --humss-color: #3C7B15; /* Green */
+  --abm-color: #ffd700; /* Yellow */
+  --ict-color: #0a2463; /* Blue */
+  --he-color: #ff69b4; /* Pink */
+  --afa-color: #8B4513; /* Brown */
+  
+  /* Text colors */
+  --text-dark: #333333;
+  --text-light: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--secondary-color);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

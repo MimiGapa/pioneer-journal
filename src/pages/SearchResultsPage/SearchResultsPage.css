@@ -1,0 +1,161 @@
+.search-results {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.search-header {
+  margin-bottom: 2rem;
+}
+
+.search-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+.search-summary {
+  color: #666;
+  font-size: 1rem;
+}
+
+.search-filters {
+  margin-left: 0.5rem;
+}
+
+.highlight {
+  color: #1565c0;
+  font-weight: 500;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #666;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.result-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+}
+
+.result-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+.result-title a {
+  color: #1565c0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.result-title a:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
+.result-authors {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.result-abstract {
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.result-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #eee;
+}
+
+.result-section {
+  background-color: #f0f0f0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.view-result-link {
+  color: #1565c0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-bottom: 1px solid #1565c0;
+  padding-bottom: 2px;
+  transition: all 0.2s ease;
+}
+
+.view-result-link:hover {
+  color: #0d47a1;
+  border-bottom: 1px solid transparent;
+  transform: translateY(-2px);
+}
+/* Notable paper styling */
+.notable-icon {
+  color: #ffd700;
+  margin-right: 8px;
+  font-size: 0.9em;
+}
+
+.notable-result {
+  border-left: 4px solid #ffd700;
+}
+
+.notable-indicator {
+  display: inline-flex;
+  align-items: center;
+}
+
+.notable-indicator i {
+  color: #ffd700;
+  margin-right: 5px;
+}
+/* In SearchBar.css, replace the existing checkbox styles with this */
+.checkbox-field {
+  margin-top: 12px;
+}
+
+.checkbox-label {
+  display: inline-flex; /* Changed from flex to inline-flex */
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap; /* Prevent wrapping */
+  width: auto; /* Let it take its natural width */
+}
+
+.checkbox-label input {
+  margin-right: 8px;
+  min-width: 16px; /* Give the checkbox a minimum width */
+  height: 16px; /* Explicitly set height */
+}
+
+.checkbox-label span {
+  display: inline; /* Force inline display */
+  font-weight: normal;
+}
+

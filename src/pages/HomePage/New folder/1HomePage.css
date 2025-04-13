@@ -1,0 +1,67 @@
+/* src/pages/HomePage/HomePage.css */
+.home-page {
+  padding: 1rem 0;
+}
+
+.home-page h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.home-page > p {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+}
+
+.strands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.strand-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  border: 2px solid transparent;
+  text-decoration: none;
+  background-color: white;
+}
+
+.strand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.strand-header {
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.strand-header h3 {
+  margin: 0;
+  color: white;
+}
+
+.strand-body {
+  padding: 1rem;
+  flex: 1;
+}
+
+.strand-body p {
+  margin: 0;
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .strands-grid {
+    grid-template-columns: 1fr;
+  }
+}
