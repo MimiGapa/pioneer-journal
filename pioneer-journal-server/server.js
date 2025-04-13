@@ -86,7 +86,7 @@ app.get('/list/:folderId', async (req, res) => {
     if (error.response) {
       console.error('API error details:', JSON.stringify(error.response.data));
     }
-    res.status(500).json({ error: 'Failed to list files', details: error.message });
+    res.status(500).json({ error: 'Google Drive API failed', details: error.message });
   }
 });
 

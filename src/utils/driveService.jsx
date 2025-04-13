@@ -17,6 +17,9 @@ const BASE_URL = window.location.hostname === 'localhost'
 // Cached metadata to avoid repeated fetches
 let papersMetadata = null;
 
+// User-friendly message state
+let userMessage = '';
+
 // Get metadata for all papers
 export async function getMetadata() {
   if (papersMetadata !== null) {
@@ -33,6 +36,7 @@ export async function getMetadata() {
     return papersMetadata;
   } catch (error) {
     console.error('Error fetching metadata:', error);
+    userMessage = 'Unable to load metadata. Please try again later.';
     return {};
   }
 }
@@ -46,6 +50,7 @@ export async function listPapers(strand) {
     
     if (!folderId) {
       console.error(`No folder ID configured for strand: ${strand}`);
+      userMessage = 'No research papers found for the selected strand.';
       return [];
     }
     
@@ -56,15 +61,7 @@ export async function listPapers(strand) {
     
     if (!response.ok) {
       console.error(`API returned status ${response.status}`);
-      // Try to get more error details
-      try {
-        const errorData = await response.json();
-        console.error('Error details:', errorData);
-      } catch (e) {
-        // If can't parse JSON, just log text
-        const text = await response.text();
-        console.error('Error response:', text);
-      }
+      userMessage = 'Error fetching research papers. Please try again later.';
       return [];
     }
     
@@ -74,6 +71,7 @@ export async function listPapers(strand) {
     // Check for valid response 
     if (!data.files || !Array.isArray(data.files)) {
       console.error("Invalid response format - no files array");
+      userMessage = 'No research papers found for the selected strand.';
       return [];
     }
     
@@ -86,9 +84,17 @@ export async function listPapers(strand) {
     );
     
     console.log(`Found ${pdfFiles.length} PDF files out of ${data.files.length} total files`);
+    
+    if (pdfFiles.length === 0) {
+      userMessage = 'No PDF research papers found for the selected strand.';
+    } else {
+      userMessage = ''; // Clear message if PDFs are found
+    }
+    
     return pdfFiles;
   } catch (error) {
     console.error('Error fetching papers:', error);
+    userMessage = 'Unable to load research papers. Please try again later.';
     return [];
   }
 }
@@ -106,4 +112,9 @@ export function getSamplePdfUrl() {
 // Fallback to Google's viewer - this is what works reliably
 export function getGoogleViewerUrl(fileId) {
   return `https://drive.google.com/file/d/${fileId}/preview`;
+}
+
+// Function to get the current user message
+export function getUserMessage() {
+  return userMessage;
 }
