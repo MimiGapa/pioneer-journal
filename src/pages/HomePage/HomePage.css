@@ -5,18 +5,75 @@
   padding: 2rem;
 }
 
-.home-page h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #800000; /* Maroon color for headings */
+/* Hero Section */
+.hero-section {
+  background-color: #800000;
+  color: #fff;
+  padding: 4rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.journal-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.explore-button {
+  display: inline-block;
+  background-color: #fff;
+  color: #800000;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.explore-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Welcome Section */
+.welcome-section {
+  text-align: center;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  max-width: 800px;
+}
+
+.welcome-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.welcome-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 auto;
 }
 
 /* Notable Papers Section */
 .notable-papers-section {
-  margin: 2rem 0;
+  margin: 3rem 0;
   padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 10px;
 }
 
 .notable-papers-section h2 {
@@ -28,58 +85,49 @@
 
 .notable-papers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .notable-paper-card {
   position: relative;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s, box-shadow 0.2s;
   overflow: hidden;
   height: 100%;
+  min-height: 220px;
 }
 
 .notable-paper-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-}
-
-.notable-paper-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #ff8c00;
-  color: white;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.8rem;
-  border-radius: 4px;
-  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
 }
 
 .notable-paper-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
   color: #333;
   line-height: 1.3;
 }
 
 .notable-paper-authors {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #666;
   margin-bottom: 0.75rem;
 }
 
 .notable-paper-abstract {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #555;
   line-height: 1.5;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   flex-grow: 1;
 }
 
@@ -90,27 +138,92 @@
   margin-top: auto;
 }
 
+.strand-badge-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .notable-paper-strand {
   font-weight: bold;
-  padding: 0.25rem 0.5rem;
-  background-color: #f0f0f0;
+  padding: 0.2rem 0.5rem;
   border-radius: 4px;
+  color: white;
+  font-size: 0.7rem;
+}
+
+.notable-badge {
+  font-size: 0.65rem;
+  background-color: #FFB347; /* Orange-yellow color */
   color: #333;
-  font-size: 0.8rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-weight: bold;
 }
 
 .notable-paper-link {
-  background-color: #800000;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: background-color 0.2s;
+  color: #800000;
+  text-decoration: underline;
+  font-size: 0.85rem;
+  transition: color 0.2s;
 }
 
 .notable-paper-link:hover {
-  background-color: #600000;
+  color: #600000;
+}
+
+/* Browse Categories Section */
+.browse-categories-section {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.browse-categories-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.strand-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.strand-category {
+  min-width: 300px;
+}
+
+.strand-category h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.strand-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.strand-link-mini {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: transform 0.2s, opacity 0.2s;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.strand-link-mini:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
 /* Loading and error states */
@@ -120,46 +233,55 @@
   color: #666;
 }
 
-/* Strand directory */
-.strand-directory {
-  margin-top: 2rem;
-  text-align: center;
+/* Footer GitHub repo link */
+.footer .repo-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
 }
 
-.strand-directory h3 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-.strand-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.strand-link-mini {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #800000;
-  color: white;
+.footer .repo-link a {
+  color: #888;
   text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
 }
 
-.strand-link-mini:hover {
-  background-color: #600000;
+.footer .repo-link a:hover {
+  color: #555;
+  text-decoration: underline;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .journal-subtitle {
+    font-size: 1.1rem;
+  }
+
   .notable-papers-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  
+  .strand-categories {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .journal-subtitle {
+    font-size: 0.9rem;
+  }
+  
   .notable-papers-grid {
     grid-template-columns: 1fr;
   }

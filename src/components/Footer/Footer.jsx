@@ -15,7 +15,7 @@ function Footer() {
             </div>
             <div className="footer-content">
               <h3>Siniloan Integrated National High School</h3>
-              <p>The Pioneer Journal of Multidisciplinary Research</p>
+              <p>The Pioneer Journal of Multidisciplinary Research, Innovation and Educational Practices</p>
             </div>
           </div>
           
@@ -50,6 +50,11 @@ function Footer() {
             This website is provided for academic and educational purposes only. The views expressed in the research papers 
             are those of the original authors and do not necessarily reflect the official policy or position of 
             Siniloan Integrated National High School.
+          </p>
+          <p className="repo-link">
+            <a href="https://github.com/MimiGapa/pioneer-journal.git" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-github"></i> View GitHub Repository
+            </a>
           </p>
         </div>
       </div>
