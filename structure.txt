@@ -1,15 +1,38 @@
 Folder PATH listing for volume HD_2TB
 Volume serial number is 1A58-AF6A
 E:.
+|   .env
 |   .gitignore
 |   index.html
 |   metadata-generator.html
 |   package-lock.json
 |   package.json
+|   server.js
 |   structure.txt
 |   test.html
 |   vite.config.js
 |   
++---.github
+|   \---workflows
+|           deploy.yml
+|           
++---dist
+|   |   1.png
+|   |   404.html
+|   |   index.html
+|   |   logo.png
+|   |   manifest.json
+|   |   _redirects
+|   |   
+|   \---assets
+|       |   index-BqjfEugU.css
+|       |   index-DJvzXLR9.js
+|       |   
+|       \---logos
+|               1.png
+|               PJ_research.png
+|               SINHS_logo.png
+|               
 +---New folder
 |       index.html
 |       
@@ -61,51 +84,7 @@ E:.
 |   |       vite.ps1
 |   |       
 |   +---.vite
-|   |   +---deps
-|   |   |       chunk-BIJXJHI2.js
-|   |   |       chunk-BIJXJHI2.js.map
-|   |   |       chunk-HJGZ4Q7O.js
-|   |   |       chunk-HJGZ4Q7O.js.map
-|   |   |       chunk-LYJUZW3I.js
-|   |   |       chunk-LYJUZW3I.js.map
-|   |   |       chunk-TJE776R7.js
-|   |   |       chunk-TJE776R7.js.map
-|   |   |       chunk-VJA3Q2RH.js
-|   |   |       chunk-VJA3Q2RH.js.map
-|   |   |       chunk-WOOG5QLI.js
-|   |   |       chunk-WOOG5QLI.js.map
-|   |   |       chunk-XJ4WB7NX.js
-|   |   |       chunk-XJ4WB7NX.js.map
-|   |   |       chunk-ZBZ7KFTL.js
-|   |   |       chunk-ZBZ7KFTL.js.map
-|   |   |       fs-M5FWEH6O.js
-|   |   |       fs-M5FWEH6O.js.map
-|   |   |       googleapis.js
-|   |   |       googleapis.js.map
-|   |   |       http-K4S2NKQR.js
-|   |   |       http-K4S2NKQR.js.map
-|   |   |       https-MKSPOH4C.js
-|   |   |       https-MKSPOH4C.js.map
-|   |   |       package.json
-|   |   |       react-dom.js
-|   |   |       react-dom.js.map
-|   |   |       react-dom_client.js
-|   |   |       react-dom_client.js.map
-|   |   |       react-pdf.js
-|   |   |       react-pdf.js.map
-|   |   |       react-router-dom.js
-|   |   |       react-router-dom.js.map
-|   |   |       react.js
-|   |   |       react.js.map
-|   |   |       react_jsx-dev-runtime.js
-|   |   |       react_jsx-dev-runtime.js.map
-|   |   |       react_jsx-runtime.js
-|   |   |       react_jsx-runtime.js.map
-|   |   |       url-RIJPXAP5.js
-|   |   |       url-RIJPXAP5.js.map
-|   |   |       _metadata.json
-|   |   |       
-|   |   \---deps_temp_36bf466e
+|   |   \---deps
 |   |           chunk-37AZBUIX.js
 |   |           chunk-37AZBUIX.js.map
 |   |           chunk-GJJM2GG4.js
@@ -3801,6 +3780,21 @@ E:.
 |   |       package.json
 |   |       README.md
 |   |       
+|   +---dotenv
+|   |   |   CHANGELOG.md
+|   |   |   config.d.ts
+|   |   |   config.js
+|   |   |   LICENSE
+|   |   |   package.json
+|   |   |   README-es.md
+|   |   |   README.md
+|   |   |   
+|   |   \---lib
+|   |           cli-options.js
+|   |           env-options.js
+|   |           main.d.ts
+|   |           main.js
+|   |           
 |   +---dunder-proto
 |   |   |   .eslintrc
 |   |   |   .nycrc
@@ -9748,6 +9742,7 @@ E:.
 |   +---New folder
 |   |       1server.js
 |   |       2server.js
+|   |       3server.js
 |   |       
 |   \---node_modules
 |       |   .package-lock.json
@@ -10870,8 +10865,10 @@ E:.
 |               
 +---public
 |   |   1.png
+|   |   404.html
 |   |   logo.png
 |   |   manifest.json
+|   |   _redirects
 |   |   
 |   \---assets
 |       \---logos
@@ -10891,6 +10888,7 @@ E:.
     |   \---images
     +---components
     |   |   BreadcrumbLayout.jsx
+    |   |   ResearchPapers.js
     |   |   
     |   +---BackToTop
     |   |       BackToTop.css
@@ -10923,6 +10921,10 @@ E:.
     |           
     +---pages
     |   +---!New folder
+    |   |   +---1StrandPage
+    |   |   |       1StrandPage.css
+    |   |   |       1StrandPage.jsx
+    |   |   |       
     |   |   \---StrandPage
     |   |           StrandPage.css
     |   |           StrandPage.jsx
@@ -10967,4 +10969,5 @@ E:.
         |   
         \---New folder
                 1driveService.jsx
+                2driveService.jsx
                 

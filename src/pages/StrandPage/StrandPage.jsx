@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { listPapers, getMetadata } from '../../utils/driveService';
+import { listPapers, getMetadata, getUserMessage } from '../../utils/driveService';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import './StrandPage.css';
 
@@ -186,6 +186,9 @@ function StrandPage() {
   // Get papers grouped by sections
   const sectionedPapers = getPapersBySection();
   const sectionNames = Object.keys(sectionedPapers).sort();
+  
+  // Get any user messages from driveService
+  const userMessage = getUserMessage();
 
   return (
     <div className="strand-page">
@@ -222,6 +225,8 @@ function StrandPage() {
           <div className="loading">Loading research papers...</div>
         ) : error ? (
           <div className="error-message">{error}</div>
+        ) : userMessage ? (
+          <div className="user-message">{userMessage}</div>
         ) : Object.keys(sectionedPapers).length === 0 ? (
           <div className="no-papers">
             <p>No research papers found for this strand.</p>
