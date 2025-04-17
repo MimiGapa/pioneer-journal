@@ -3,10 +3,12 @@ Volume serial number is 1A58-AF6A
 E:.
 |   .env
 |   .gitignore
+|   cleanup.js
 |   index.html
 |   metadata-generator.html
 |   package-lock.json
 |   package.json
+|   README.md
 |   server.js
 |   structure.txt
 |   test.html
@@ -33,9 +35,6 @@ E:.
 |               PJ_research.png
 |               SINHS_logo.png
 |               
-+---New folder
-|       index.html
-|       
 +---node_modules
 |   |   .package-lock.json
 |   |   
@@ -9739,11 +9738,6 @@ E:.
 |   |   package.json
 |   |   server.js
 |   |   
-|   +---New folder
-|   |       1server.js
-|   |       2server.js
-|   |       3server.js
-|   |       
 |   \---node_modules
 |       |   .package-lock.json
 |       |   
@@ -10881,14 +10875,14 @@ E:.
     |   App.jsx
     |   main.jsx
     |   
-    +---appx
-    |       1App.jsx
-    |       
     +---assets
+    |   +---fonts
+    |   +---icons
     |   \---images
     +---components
     |   |   BreadcrumbLayout.jsx
-    |   |   ResearchPapers.js
+    |   |   NotableResearchPapers.css
+    |   |   NotableResearchPapers.jsx
     |   |   
     |   +---BackToTop
     |   |       BackToTop.css
@@ -10903,13 +10897,9 @@ E:.
     |   |       Footer.jsx
     |   |       
     |   +---Header
-    |   |   |   Header.css
-    |   |   |   Header.jsx
-    |   |   |   
-    |   |   \---New folder
-    |   |           1Header.css
-    |   |           1Header.jsx
-    |   |           
+    |   |       Header.css
+    |   |       Header.jsx
+    |   |       
     |   +---PDFViewer
     |   |       PDFViewer.css
     |   |       PDFViewer.jsx
@@ -10919,28 +10909,17 @@ E:.
     |           SearchBar.css
     |           SearchBar.jsx
     |           
+    +---context
+    +---hooks
     +---pages
-    |   +---!New folder
-    |   |   +---1StrandPage
-    |   |   |       1StrandPage.css
-    |   |   |       1StrandPage.jsx
-    |   |   |       
-    |   |   \---StrandPage
-    |   |           StrandPage.css
-    |   |           StrandPage.jsx
-    |   |           
     |   +---ErrorPage
     |   |       ErrorPage.css
     |   |       ErrorPage.jsx
     |   |       
     |   +---HomePage
-    |   |   |   HomePage.css
-    |   |   |   HomePage.jsx
-    |   |   |   
-    |   |   \---New folder
-    |   |           1HomePage.css
-    |   |           1HomePage.jsx
-    |   |           
+    |   |       HomePage.css
+    |   |       HomePage.jsx
+    |   |       
     |   +---SearchResultsPage
     |   |       SearchResultsPage.css
     |   |       SearchResultsPage.jsx
@@ -10954,20 +10933,13 @@ E:.
     |   |       StrandsPage.jsx
     |   |       
     |   \---ViewerPage
-    |       |   ViewerPage.css
-    |       |   ViewerPage.jsx
-    |       |   
-    |       \---New folder
-    |               1ViewerPage.css
-    |               1ViewerPage.jsx
-    |               
+    |           ViewerPage.css
+    |           ViewerPage.jsx
+    |           
+    +---services
     +---styles
     |       global.css
     |       
     \---utils
-        |   driveService.jsx
-        |   
-        \---New folder
-                1driveService.jsx
-                2driveService.jsx
-                
+            driveService.jsx
+            
