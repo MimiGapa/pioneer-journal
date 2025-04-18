@@ -1,3 +1,5 @@
+@import './fonts.css';
+
 /* Global styles */
 :root {
   /* Brand colors */
@@ -25,7 +27,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Use your custom font for body text */
+  font-family: 'Kievit Serif Book', serif;
   line-height: 1.6;
   color: var(--text-dark);
   background-color: var(--secondary-color);
@@ -45,6 +48,8 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
   color: var(--primary-color);
+  /* Use a different custom font for headings if desired */
+  font-family: 'Kievit Serif', serif;
 }
 
 a {
@@ -78,4 +83,21 @@ img {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+/* Tagline text using Novecento sans narrow */
+.tagline {
+  font-family: 'Novecento sans narrow', sans-serif;
+  font-style: normal;
+}
+
+/* Hero description text using Kievit Serif Book */
+.hero-description {
+  font-family: 'Kievit Serif Book', serif;
+  font-style: italic;
+}
+
+.search-input::placeholder {
+  font-family: 'Kievit Serif Book', serif;
+  font-style: italic;
 }

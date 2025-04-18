@@ -24,3 +24,16 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 - (Nothing removed in this version yet)
+
+## [1.1.0] - 2025-04-18
+
+### Added
+- Custom CSS keyframe animations for the header on desktop to ensure a sequential reveal even when all content is visible.
+  
+### Changed
+- Improved page transitions by refining the fade in/out effects between routes.
+- Reduced AOS delay values and animation duration in StrandPage to improve responsiveness.
+- Adjusted footer typography by preventing line breaks in "High School" (using non-breaking spaces or inline CSS).
+
+### Fixed
+- Fixed laggy transitions that previously caused a cut-off before new pages loaded.

@@ -6,8 +6,12 @@
 }
 
 /* Hero Section */
+.hero-title {
+  color: white;
+}
+
 .hero-section {
-  background-color: #800000;
+  background-color: #0a2463;
   color: #fff;
   padding: 4rem 2rem;
   border-radius: 10px;
@@ -36,7 +40,7 @@
 .explore-button {
   display: inline-block;
   background-color: #fff;
-  color: #800000;
+  color: #0a2463;
   padding: 0.8rem 1.5rem;
   border-radius: 30px;
   font-weight: bold;

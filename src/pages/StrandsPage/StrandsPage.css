@@ -1,4 +1,8 @@
-/* Add this to your StrandsPage.css file to center the strand title and paper count */
+/* ------------------------------- */
+/* Existing styles (unchanged) */
+/* ------------------------------- */
+
+/* Center the strand title and paper count */
 .strand-banner {
   display: flex;
   flex-direction: column;
@@ -16,7 +20,6 @@
   margin-left: 0;
   margin-top: 10px;
 }
-/* Add this to your StrandsPage.css file */
 
 /* Make sure strand title never has underline */
 .strand-banner .strand-title,
@@ -24,24 +27,26 @@
   text-decoration: none !important;
 }
 
-/* Add underline specifically for "Browse papers" link when hovering */
+/* Underline "Browse papers" link on hover */
 .strand-card:hover .strand-link {
   text-decoration: underline;
   transform: translateX(5px);
   color: #333;
 }
-/* Add this to your StrandsPage.css file */
+
+/* Ensure no underlines on all strand titles */
 .strand-title,
 .strand-banner h2,
 .strand-card:hover .strand-title {
   text-decoration: none !important;
 }
 
-/* Also make sure the strand card itself has no text decoration */
+/* Remove underline on strand card itself */
 .strand-card, 
 .strand-card:hover {
   text-decoration: none !important;
 }
+
 .paper-count {
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.25);
@@ -180,5 +185,51 @@
   
   .strands-header h1 {
     font-size: 2rem;
+  }
+}
+
+/* AOS Fade-Up Animation Styles */
+/* These rules ensure that elements with data-aos="fade-up" start slightly lower & faded, then transition up when animated */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------- */
+/* Custom Header Animation for Desktop */
+/* ------------------------------- */
+
+/* Keyframe for fadeInUp */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the keyframe animation to header elements in the ".animate-on-load" container */
+.strands-header.animate-on-load .header-title,
+.strands-header.animate-on-load .header-subtext {
+  opacity: 0 !important; /* Force initial hidden state */
+  animation: fadeInUp 0.8s ease forwards !important;
+}
+
+/* Stagger header animations with delays on desktop */
+@media (min-width: 768px) {
+  .strands-header.animate-on-load .header-title {
+    animation-delay: 0.2s !important;
+  }
+  .strands-header.animate-on-load .header-subtext {
+    animation-delay: 0.4s !important;
   }
 }

@@ -3,6 +3,7 @@ Volume serial number is 1A58-AF6A
 E:.
 |   .env
 |   .gitignore
+|   CHANGELOG.md
 |   cleanup.js
 |   index.html
 |   metadata-generator.html

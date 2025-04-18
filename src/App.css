@@ -12,6 +12,27 @@
   margin: 0 auto;
 }
 
+/* Updated fade transition classes for route animations */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(20px); /* Start further down for a more noticeable effect */
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 800ms ease, transform 800ms ease;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 800ms ease, transform 800ms ease;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .main-content {
     padding: 0.5rem;

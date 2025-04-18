@@ -2,7 +2,8 @@
 .footer {
   background-color: #f8f9fa;
   margin-top: 3rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Changed default footer font to Kievit Serif */
+  font-family: 'Kievit Serif', serif;
 }
 
 .footer-main {
@@ -96,10 +97,13 @@
   text-align: center;
 }
 
+/* Legal and disclaimer text now use Kievit Serif Book and are not italicized */
 .legal-text, .disclaimer {
   margin: 1rem 0;
   line-height: 1.6;
   text-align: justify;
+  font-family: 'Kievit Serif Book', serif;
+  font-style: normal;
 }
 
 /* Responsive adjustments */
@@ -127,4 +131,9 @@
   .footer-links li {
     justify-content: center;
   }
+}
+
+/* Rule for Old English font on the school name */
+.old-english {
+  font-family: 'Old English Five', serif;
 }

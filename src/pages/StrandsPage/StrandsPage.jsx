@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getMetadata } from '../../utils/driveService';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 import './StrandsPage.css';
 
 function StrandsPage() {
   const [counts, setCounts] = useState({});
   const [loading, setLoading] = useState(true);
-  
+
   // Fetch metadata and calculate counts
   useEffect(() => {
     async function fetchData() {
       try {
         const metadata = await getMetadata();
         const strandCounts = {};
-        
-        // Count papers per strand
+
+        // Count papers per strand using the first word of the section
         Object.values(metadata).forEach(paper => {
           if (!paper.section) return;
-          
-          const strand = paper.section.split(' ')[0]; // Extract strand name from section
+          const strand = paper.section.split(' ')[0];
           strandCounts[strand] = (strandCounts[strand] || 0) + 1;
         });
-        
+
         setCounts(strandCounts);
         setLoading(false);
       } catch (error) {
@@ -29,9 +30,24 @@ function StrandsPage() {
         setLoading(false);
       }
     }
-    
     fetchData();
   }, []);
+
+  // Initialize AOS in this component
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 50,
+    });
+  }, []);
+
+  // Refresh AOS once loading is done so that newly rendered elements are picked up
+  useEffect(() => {
+    if (!loading) {
+      AOS.refreshHard(); // refreshHard forces a full recalc
+    }
+  }, [loading]);
 
   // Define strands with proper categorization
   const strands = [
@@ -57,8 +73,7 @@ function StrandsPage() {
       description: 'Research on business practices, economic theories, entrepreneurship, and financial systems.',
       category: 'academic'
     },
-    
-    // Technical-Vocational-Livelihood (TVL) Strands
+    // TVL Strands
     {
       id: 'ict',
       name: 'Information and Communication Technology',
@@ -89,19 +104,26 @@ function StrandsPage() {
   return (
     <div className="strands-page">
       <div className="strands-header">
-        <h1>Senior High School Strands</h1>
-        <p>Explore research papers across different academic and technical-vocational disciplines</p>
+        {/* Header now contains one single line */}
+        <h1 data-aos="fade-up" data-aos-delay="50">Senior High School Strands</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+          Explore research papers across different academic and technical-vocational disciplines
+        </p>
       </div>
-      
+
       {/* Academic Strands Section */}
       <div className="strand-category-section">
-        <h2 className="strand-category-title">Academic Strands</h2>
+        <h2 className="strand-category-title" data-aos="fade-up" data-aos-delay="50">
+          Academic Strands
+        </h2>
         <div className="strands-grid">
-          {academicStrands.map(strand => (
+          {academicStrands.map((strand, index) => (
             <Link 
               to={`/strand/${strand.id}`} 
               key={strand.id}
               className="strand-card"
+              data-aos="fade-up"
+              data-aos-delay={50 + index * 80}  // Start at 50ms then increment 80ms per card
             >
               <div className="strand-banner" style={{ backgroundColor: strand.color }}>
                 <h2 className="strand-title">{strand.id.toUpperCase()}</h2>
@@ -120,16 +142,20 @@ function StrandsPage() {
           ))}
         </div>
       </div>
-      
+
       {/* TVL Strands Section */}
       <div className="strand-category-section">
-        <h2 className="strand-category-title">Technical-Vocational-Livelihood (TVL) Strands</h2>
+        <h2 className="strand-category-title" data-aos="fade-up" data-aos-delay="50">
+          Technical-Vocational-Livelihood (TVL) Strands
+        </h2>
         <div className="strands-grid">
-          {tvlStrands.map(strand => (
+          {tvlStrands.map((strand, index) => (
             <Link 
               to={`/strand/${strand.id}`} 
               key={strand.id}
               className="strand-card"
+              data-aos="fade-up"
+              data-aos-delay={50 + index * 80}
             >
               <div className="strand-banner" style={{ backgroundColor: strand.color }}>
                 <h2 className="strand-title">{strand.id.toUpperCase()}</h2>

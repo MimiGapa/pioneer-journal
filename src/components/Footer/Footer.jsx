@@ -14,8 +14,12 @@ function Footer() {
               <img src="/assets/logos/SINHS_logo.png" alt="SINHS Logo" />
             </div>
             <div className="footer-content">
-              <h3>Siniloan Integrated National High School</h3>
-              <p>The Pioneer Journal of Multidisciplinary Research, Innovation and Educational Practices</p>
+              <h3 className="old-english">
+                Siniloan Integrated National <span style={{ whiteSpace: 'nowrap' }}>High School</span>
+              </h3>
+              <p>
+                The Pioneer Journal of Multidisciplinary Research, Innovation and Educational Practices
+              </p>
             </div>
           </div>
           
@@ -39,17 +43,16 @@ function Footer() {
         <div className="container">
           <p className="copyright">
             &copy; {currentYear} The Pioneer Journal of Multidisciplinary Research, Innovation and Educational Practices<br />
-            Siniloan Integrated National High School. All Rights Reserved.
+            Siniloan Integrated National <span style={{ whiteSpace: 'nowrap' }}>High School</span>. All Rights Reserved.
           </p>
           <p className="legal-text">
             All materials, including research papers, images, and other content on this website, are the intellectual property of 
-            Siniloan Integrated National High School or their respective authors. Unauthorized reproduction, distribution, or use 
-            of any content is strictly prohibited without written permission.
+            Siniloan Integrated National <span style={{ whiteSpace: 'nowrap' }}>High School</span> or their respective authors. Unauthorized reproduction, distribution, or use of any content is strictly prohibited without written permission.
           </p>
           <p className="disclaimer">
             This website is provided for academic and educational purposes only. The views expressed in the research papers 
             are those of the original authors and do not necessarily reflect the official policy or position of 
-            Siniloan Integrated National High School.
+            Siniloan Integrated National <span style={{ whiteSpace: 'nowrap' }}>High School</span>.
           </p>
           <p className="repo-link">
             <a href="https://github.com/MimiGapa/pioneer-journal.git" target="_blank" rel="noopener noreferrer">
