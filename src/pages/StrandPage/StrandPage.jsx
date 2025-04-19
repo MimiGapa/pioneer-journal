@@ -29,6 +29,8 @@ function StrandPage() {
           listPapers(strandId),
           getMetadata()
         ]);
+        console.log("Fetched papers:", papersList);
+        console.log("Fetched metadata:", metadataObj);
         setPapers(papersList);
         setMetadata(metadataObj);
         setLoading(false);

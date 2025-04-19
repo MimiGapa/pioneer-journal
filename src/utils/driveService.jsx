@@ -22,16 +22,17 @@ let userMessage = '';
 
 // Get metadata for all papers
 export async function getMetadata() {
-  if (papersMetadata !== null) {
-    return papersMetadata; // Return cached data if available
-  }
-  
+  // Define the source based on environment
+  const isLocal = window.location.hostname === 'localhost';
+  const metadataUrl = isLocal
+    ? `/metadata.json?ts=${Date.now()}`
+    : `${PROXY_URL}/metadata?ts=${Date.now()}`;
+
   try {
-    const response = await fetch(`${PROXY_URL}/metadata`);
+    const response = await fetch(metadataUrl);
     if (!response.ok) {
       throw new Error(`Failed to fetch metadata: ${response.status}`);
     }
-    
     papersMetadata = await response.json();
     return papersMetadata;
   } catch (error) {
