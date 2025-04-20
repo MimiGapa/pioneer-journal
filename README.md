@@ -1,4 +1,3 @@
-```markdown
 # Pioneer Journal
 
 Pioneer Journal is a digital repository for academic research papers organized by various educational strands. Designed to facilitate access to scholarly research, this project leverages modern web technologies to create a scalable, maintainable, and user-friendly platform.
