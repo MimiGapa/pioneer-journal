@@ -32,3 +32,6 @@ yarn-error.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local metadata copy (symbolic link)
+public/metadata.json
