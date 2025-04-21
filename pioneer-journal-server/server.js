@@ -101,7 +101,7 @@ app.get('/list/:folderId', async (req, res) => {
     
     const response = await axios.get(url, {
       headers: {
-        'Referer': 'https://pioneer-journal.netlify.app/'
+        'Referer': 'https://thepioneerjournal.netlify.app/'
       },
       timeout: 15000 // 15 second timeout
     });
@@ -150,7 +150,7 @@ app.get('/pdf/:fileId', async (req, res) => {
       responseType: 'arraybuffer',
       timeout: 30000,
       headers: {
-        'Referer': 'https://pioneer-journal.netlify.app/'
+        'Referer': 'https://thepioneerjournal.netlify.app/'
       }
     });
     
