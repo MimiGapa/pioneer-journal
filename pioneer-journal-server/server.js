@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 // Enable CORS with specific origins
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://192.168.11.183:3000', 'https://pioneer-journal.netlify.app'],
+  origin: ['http://localhost:3000', 'http://192.168.11.183:3000', 'https://thepioneerjournal.netlify.app/'],
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS']
 }));
