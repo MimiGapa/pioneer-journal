@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 // Enable CORS with specific origins
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://192.168.11.183:3000', 'https://thepioneerjournal.netlify.app/'],
+  origin: ['http://localhost:3000', 'http://192.168.11.183:3000', 'https://thepioneerjournal.netlify.app'],
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS']
 }));
@@ -101,7 +101,7 @@ app.get('/list/:folderId', async (req, res) => {
     
     const response = await axios.get(url, {
       headers: {
-        'Referer': 'https://thepioneerjournal.netlify.app/'
+        'Referer': 'https://thepioneerjournal.netlify.app'
       },
       timeout: 15000 // 15 second timeout
     });
@@ -150,7 +150,7 @@ app.get('/pdf/:fileId', async (req, res) => {
       responseType: 'arraybuffer',
       timeout: 30000,
       headers: {
-        'Referer': 'https://thepioneerjournal.netlify.app/'
+        'Referer': 'https://thepioneerjournal.netlify.app'
       }
     });
     
