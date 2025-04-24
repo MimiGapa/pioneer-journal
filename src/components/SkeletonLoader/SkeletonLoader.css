@@ -4,8 +4,6 @@
     background-position: -200% 0;
   }
   100% {
-
-
     background-position: 200% 0;
   }
 }
@@ -18,34 +16,31 @@
 }
 
 /* Notable Research Papers Skeleton */
+.notable-papers-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .skeleton-notable-paper-card {
   position: relative;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
   overflow: hidden;
-}
-
-.skeleton-notable-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 60px;
-  height: 24px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  height: 100%;
+  min-height: 220px;
 }
 
 .skeleton-notable-title {
-  width: 80%;
-  height: 24px;
-  margin-bottom: 0.75rem;
+  width: 90%;
+  height: 18px;
+  margin-bottom: 0.5rem;
   border-radius: 4px;
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
   background-size: 200% 100%;
@@ -54,7 +49,7 @@
 
 .skeleton-notable-authors {
   width: 65%;
-  height: 16px;
+  height: 14px;
   margin-bottom: 0.75rem;
   border-radius: 4px;
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
@@ -64,8 +59,8 @@
 
 .skeleton-notable-abstract {
   width: 100%;
-  height: 80px;
-  margin-bottom: 1.5rem;
+  height: 60px;
+  margin-bottom: 1.25rem;
   border-radius: 4px;
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
   background-size: 200% 100%;
@@ -78,20 +73,36 @@
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+  width: 100%;
+}
+
+.skeleton-notable-strand-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .skeleton-notable-strand {
-  width: 60px;
-  height: 24px;
+  width: 40px;
+  height: 18px;
   border-radius: 4px;
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
+.skeleton-notable-badge {
+  width: 50px;
+  height: 16px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
 .skeleton-notable-link {
-  width: 90px;
-  height: 36px;
+  width: 70px;
+  height: 14px;
   border-radius: 4px;
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
   background-size: 200% 100%;

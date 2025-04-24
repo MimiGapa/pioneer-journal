@@ -7,12 +7,14 @@ export const NotablePaperSkeletonLoader = () => {
     <div className="notable-papers-container">
       {[1, 2, 3, 4].map((item) => (
         <div key={item} className="skeleton-notable-paper-card">
-          <div className="skeleton-notable-badge"></div>
-          <h3 className="skeleton-notable-title"></h3>
+          <div className="skeleton-notable-title"></div>
           <div className="skeleton-notable-authors"></div>
           <div className="skeleton-notable-abstract"></div>
           <div className="skeleton-notable-footer">
-            <span className="skeleton-notable-strand"></span>
+            <div className="skeleton-notable-strand-container">
+              <span className="skeleton-notable-strand"></span>
+              <span className="skeleton-notable-badge"></span>
+            </div>
             <div className="skeleton-notable-link"></div>
           </div>
         </div>

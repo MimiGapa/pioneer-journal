@@ -36,8 +36,8 @@ function HomePage() {
             ...paperData,
           }));
         
-        setFeaturedPapers(featured);
-        setLoading(false);
+          setFeaturedPapers(featured);
+          setLoading(false);
       } catch (error) {
         console.error('Error fetching featured papers:', error);
         setError('Failed to load notable research papers');
