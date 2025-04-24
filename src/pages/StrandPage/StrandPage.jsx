@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { listPapers, getMetadata } from '../../utils/driveService';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import { ResearchPaperSkeletonLoader } from '../../components/SkeletonLoader/SkeletonLoader';
 import './StrandPage.css';
 
 function StrandPage() {
@@ -205,10 +206,8 @@ function StrandPage() {
         </div>
 
         {loading ? (
-          <div className="loading" data-aos="fade-up" data-aos-delay="150">
-            Loading research papers...
-          </div>
-        ) : error ? (
+  <ResearchPaperSkeletonLoader data-aos="fade-up" data-aos-delay="150" />
+) : error ? (
           <div className="error-message" data-aos="fade-up" data-aos-delay="150">
             {error}
           </div>

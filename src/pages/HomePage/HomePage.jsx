@@ -5,6 +5,7 @@ import { getMetadata } from '../../utils/driveService';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './HomePage.css';
+import { NotablePaperSkeletonLoader } from '../../components/SkeletonLoader/SkeletonLoader';
 
 function HomePage() {
   const [featuredPapers, setFeaturedPapers] = useState([]);
@@ -118,13 +119,12 @@ function HomePage() {
         </h2>
         {loading ? (
           <div
-            className="loading"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Loading notable research papers...
+            <NotablePaperSkeletonLoader />
           </div>
-        ) : error ? (
+        ) : error ? ( 
           <div
             className="error"
             data-aos="fade-up"
