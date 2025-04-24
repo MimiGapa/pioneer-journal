@@ -25,5 +25,3 @@ function SplashScreen({ onFinish }) {
 }
 
 export default SplashScreen;
-
-

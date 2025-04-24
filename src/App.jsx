@@ -17,7 +17,10 @@ import "./App.css";
 function App() {
   const location = useLocation();
   const nodeRef = useRef(null);
+  // Set showSplash to true by default so it shows when the app first loads
   const [showSplash, setShowSplash] = useState(true);
+  // Track if this is the initial load
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
     AOS.init({
@@ -25,6 +28,14 @@ function App() {
       once: true,
       offset: 50,
     });
+    
+    // If this isn't the first mount (e.g., it's a refresh), skip the splash
+    if (!isInitialMount.current) {
+      setShowSplash(false);
+    }
+    
+    // Mark that initial mounting is done
+    isInitialMount.current = false;
   }, []);
 
   useEffect(() => {
