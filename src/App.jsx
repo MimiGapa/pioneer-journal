@@ -11,16 +11,14 @@ import StrandPage from "./pages/StrandPage/StrandPage";
 import ViewerPage from "./pages/ViewerPage/ViewerPage";
 import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage";
 import BackToTop from "./components/BackToTop/BackToTop";
-import SplashScreen from "./pages/SplashScreen/SplashScreen"; // New splash screen component
+import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import "./App.css";
 
 function App() {
   const location = useLocation();
   const nodeRef = useRef(null);
-  // Set showSplash to true by default so it shows when the app first loads
+  // Default to showing splash
   const [showSplash, setShowSplash] = useState(true);
-  // Track if this is the initial load
-  const isInitialMount = useRef(true);
 
   useEffect(() => {
     AOS.init({
@@ -29,13 +27,26 @@ function App() {
       offset: 50,
     });
     
-    // If this isn't the first mount (e.g., it's a refresh), skip the splash
-    if (!isInitialMount.current) {
-      setShowSplash(false);
+    // Check if this is a refresh using Performance API
+    let isRefresh = false;
+    
+    // Try the modern Navigation API first
+    if (window.performance && window.performance.getEntriesByType) {
+      const navEntries = window.performance.getEntriesByType('navigation');
+      if (navEntries.length > 0) {
+        isRefresh = navEntries[0].type === 'reload';
+      }
     }
     
-    // Mark that initial mounting is done
-    isInitialMount.current = false;
+    // Fallback to older API if needed
+    if (!isRefresh && window.performance && window.performance.navigation) {
+      isRefresh = window.performance.navigation.type === 1;
+    }
+    
+    // If it's a refresh, don't show splash
+    if (isRefresh) {
+      setShowSplash(false);
+    }
   }, []);
 
   useEffect(() => {
