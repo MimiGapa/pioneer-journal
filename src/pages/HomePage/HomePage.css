@@ -190,15 +190,15 @@
 }
 
 .strand-categories {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto;
   justify-content: center;
   gap: 2rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .strand-category {
-  min-width: 300px;
+  min-width: 100px;
 }
 
 .strand-category h4 {
@@ -274,6 +274,10 @@
   .strand-categories {
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  .welcome-section p {
+    text-align: justify;
   }
 }
 

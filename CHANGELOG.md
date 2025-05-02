@@ -37,3 +37,17 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Fixed laggy transitions that previously caused a cut-off before new pages loaded.
+
+## [1.2.0] - 2025-04-25
+
+### Added
+- Simple Skeleton Loader for the Notable Research Paper section on the Home Page and the research papers per Strand Page.
+
+## [1.3.0] - 2025-05-02
+
+### Changed
+- UI of Home page.
+
+### Fixed
+- Mobile Responsiveness (research papers in the Strand Page).
+- Aspect ratio of logo in the Footer.

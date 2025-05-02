@@ -2,7 +2,6 @@
 .footer {
   background-color: #f8f9fa;
   margin-top: 3rem;
-  /* Changed default footer font to Kievit Serif */
   font-family: 'Kievit Serif', serif;
 }
 
@@ -30,8 +29,9 @@
 }
 
 .footer-logo img {
-  height: 60px;
+  max-height: 64px;
   width: auto;
+  max-width: 100%;
 }
 
 .footer-content h3 {
@@ -107,10 +107,22 @@
 }
 
 /* Responsive adjustments */
+@media (min-width: 1920px) {
+  .footer-main {
+    padding-left: 17%;
+  }
+}
+
+@media (width: 1440px) {
+  .footer-main {
+    padding-left: 20%;
+  }
+}
+
 @media (min-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: center;
   }
   
   .footer-legal .container {

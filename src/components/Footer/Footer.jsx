@@ -43,16 +43,16 @@ function Footer() {
         <div className="container">
           <p className="copyright">
             &copy; {currentYear} The Pioneer Journal of Multidisciplinary Research, Innovation and Educational Practices<br />
-            Siniloan Integrated National <span style={{ whiteSpace: 'nowrap' }}>High School</span>. All Rights Reserved.
+            Siniloan Integrated National High School. <span style={{ whiteSpace: 'nowrap' }}>All Rights Reserved.</span>
           </p>
           <p className="legal-text">
             All materials, including research papers, images, and other content on this website, are the intellectual property of 
-            Siniloan Integrated National <span style={{ whiteSpace: 'nowrap' }}>High School</span> or their respective authors. Unauthorized reproduction, distribution, or use of any content is strictly prohibited without written permission.
+            Siniloan Integrated National High School or their respective authors. Unauthorized reproduction, distribution, or use of any content is strictly prohibited without written permission.
           </p>
           <p className="disclaimer">
             This website is provided for academic and educational purposes only. The views expressed in the research papers 
             are those of the original authors and do not necessarily reflect the official policy or position of 
-            Siniloan Integrated National <span style={{ whiteSpace: 'nowrap' }}>High School</span>.
+            Siniloan Integrated National High School.
           </p>
           <p className="repo-link">
             <a href="https://github.com/MimiGapa/pioneer-journal.git" target="_blank" rel="noopener noreferrer">

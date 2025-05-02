@@ -80,6 +80,12 @@
   gap: 1.5rem;
 }
 
+@media (max-width: 600px) {
+  .papers-grid {
+    grid-template-columns: 1fr; /* Single column layout on small screens */
+  }
+}
+
 .paper-card {
   display: flex;
   flex-direction: column;
