@@ -7,5 +7,4 @@ export default defineConfig({
     port: 3000,
     host: true
   }
-  // No need for base path like with GitHub Pages!
 });
