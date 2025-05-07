@@ -51,3 +51,10 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Mobile Responsiveness (research papers in the Strand Page).
 - Aspect ratio of logo in the Footer.
+
+## [1.4.0] - 2025-05-07
+
+### Changed
+- Facebook Link
+- Favicons for different devices
+- Background Color of the Splash Animation
