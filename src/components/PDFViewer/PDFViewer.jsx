@@ -1,4 +1,3 @@
-// At the top of your file
 import { Document, Page, pdfjs } from 'react-pdf';
 
 // This is critical - set the worker URL

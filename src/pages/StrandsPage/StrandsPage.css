@@ -21,7 +21,6 @@
   margin-top: 10px;
 }
 
-/* Make sure strand title never has underline */
 .strand-banner .strand-title,
 .strand-card:hover .strand-banner .strand-title {
   text-decoration: none !important;

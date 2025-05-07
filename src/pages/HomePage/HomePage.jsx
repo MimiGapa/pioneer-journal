@@ -1,4 +1,3 @@
-// src/pages/HomePage/HomePage.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getMetadata } from '../../utils/driveService';

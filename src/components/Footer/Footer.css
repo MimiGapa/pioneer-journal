@@ -1,4 +1,3 @@
-/* Footer.css */
 .footer {
   background-color: #f8f9fa;
   margin-top: 3rem;
@@ -97,7 +96,6 @@
   text-align: center;
 }
 
-/* Legal and disclaimer text now use Kievit Serif Book and are not italicized */
 .legal-text, .disclaimer {
   margin: 1rem 0;
   line-height: 1.6;
@@ -107,17 +105,6 @@
 }
 
 /* Responsive adjustments */
-@media (min-width: 1920px) {
-  .footer-main {
-    padding-left: 17%;
-  }
-}
-
-@media (width: 1440px) {
-  .footer-main {
-    padding-left: 20%;
-  }
-}
 
 @media (min-width: 768px) {
   .footer-container {

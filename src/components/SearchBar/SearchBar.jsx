@@ -8,7 +8,7 @@ function SearchBar() {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [authorFilter, setAuthorFilter] = useState('');
   const [sectionFilter, setSectionFilter] = useState('');
-  const [notableFilter, setNotableFilter] = useState(false); // New state for notable filter
+  const [notableFilter, setNotableFilter] = useState(false);
   const [sections, setSections] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const searchModalRef = useRef(null);

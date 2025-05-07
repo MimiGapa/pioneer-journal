@@ -30,8 +30,8 @@ function Footer() {
               <li><i className="fas fa-phone"></i> (049) 591-0182</li>
               <li><i className="fas fa-envelope"></i> 301273@deped.gov.ph</li>
               <li>
-                <a href="https://www.facebook.com/BEdakasaSINHS" target="_blank" rel="noopener noreferrer" className="social-link">
-                  <i className="fab fa-facebook-f"></i> BEdakasaSINHS
+                <a href="https://www.facebook.com/DepedTayoSINHS301273" target="_blank" rel="noopener noreferrer" className="social-link">
+                  <i className="fab fa-facebook-f"></i> Deped Tayo Siniloan INHS - Laguna
                 </a>
               </li>
             </ul>

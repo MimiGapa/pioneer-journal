@@ -15,7 +15,7 @@
 /* Updated fade transition classes for route animations */
 .fade-enter {
   opacity: 0;
-  transform: translateY(20px); /* Start further down for a more noticeable effect */
+  transform: translateY(20px);
 }
 .fade-enter-active {
   opacity: 1;

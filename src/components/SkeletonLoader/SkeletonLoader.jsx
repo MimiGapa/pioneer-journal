@@ -1,4 +1,3 @@
-// src/components/SkeletonLoader/SkeletonLoader.jsx
 import React from 'react';
 import './SkeletonLoader.css';
 

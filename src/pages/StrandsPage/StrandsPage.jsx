@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getMetadata } from '../../utils/driveService';
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './StrandsPage.css';
 
 function StrandsPage() {
