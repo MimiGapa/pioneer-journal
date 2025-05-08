@@ -46,15 +46,34 @@ All notable changes to this project will be documented in this file.
 ## [1.3.0] - 2025-05-02
 
 ### Changed
-- UI of Home page.
+- Enhanced UI of Home page.
 
 ### Fixed
-- Mobile Responsiveness (research papers in the Strand Page).
-- Aspect ratio of logo in the Footer.
+- Fixed Mobile Responsiveness (research papers in the Strand Page).
+- Fixed Aspect ratio of logo in the Footer.
 
 ## [1.4.0] - 2025-05-07
 
+### Added
+- Favicons for different devices.
+
 ### Changed
-- Facebook Link
-- Favicons for different devices
-- Background Color of the Splash Animation
+- Updated Facebook Link.
+- Changed the Favicon logo.
+- Matched the background color of the Splash Animation.
+
+## [1.5.0] - 2025-05-08
+
+### Added
+- Download PDF and Share button (Email, Facebook, X, LinkedIn, Reddit, WhatsApp, Telegram, Messenger, Threads).
+
+### Changed
+- Adjusted margins for Paper Metadata on Viewer Page.
+
+### Fixed
+- Fixed Footer container alignment and its responsiveness.
+
+## [1.6.0] - 2025-05-09
+
+### Added
+- Close share popup when clicked outside of it.

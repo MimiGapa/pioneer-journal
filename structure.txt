@@ -32,16 +32,32 @@ E:.
 |   |   1.png
 |   |   404.html
 |   |   _redirects
+|   |   android-chrome-192x192.png
+|   |   android-chrome-512x512.png
+|   |   apple-touch-icon.png
 |   +---assets
 |   |   +---animations
 |   |   |   |   splashAnimation.json
+|   |   +---icons
+|   |   |   |   email-icon.svg
+|   |   |   |   facebook-icon.svg
+|   |   |   |   linkedin-icon.svg
+|   |   |   |   messenger-icon.svg
+|   |   |   |   reddit-icon.svg
+|   |   |   |   telegram-icon.svg
+|   |   |   |   threads-icon.svg
+|   |   |   |   whatsapp-icon.svg
+|   |   |   |   x-icon.svg
 |   |   \---logos
-|   |       |   1.png
 |   |       |   PJ_research.png
 |   |       |   SINHS_logo.png
+|   |   favicon-16x16.png
+|   |   favicon-32x32.png
+|   |   favicon.ico
 |   |   logo.png
 |   |   manifest.json
 |   |   metadata.json
+|   |   site.webmanifest
 +---src
     |   App.css
     |   App.jsx

@@ -30,7 +30,23 @@
   background-color: #e0e0e0;
 }
 
+/* paper-metadata */
+.paper-title {
+  margin-bottom: 0rem;
+}
+
+.metadata-section h3 {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.paper-abstract {
+  text-indent: 2.5rem;
+  text-align: justify;
+}
+
 .google-viewer-container {
+  margin-top: 1.5rem;
   width: 100%;
   height: 80vh;
   min-height: 600px;
@@ -43,4 +59,114 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.download-share-options {
+  display: flex; /* Arrange buttons side by side */
+  gap: 1rem; /* Add space between buttons */
+  margin-top: 1rem; /* Add some space above */
+}
+
+.button-icon {
+  width: 20px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 0.5rem; /* Space between icon and text */
+  vertical-align: middle; /* Align icon with text */
+}
+
+/* Download Button Styles */
+.download-button {
+  padding: 0.5rem 1rem; /* Add padding for better click area */
+  border: 2px solid var(--primary-color); /* Outline style */
+  background: transparent; /* No background */
+  color: var(--primary-color); /* Text color matches primary color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 4px; /* Rounded corners */
+  position: relative; /* For underline effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.download-button:hover {
+  border-color: transparent; /* Remove outline on hover */
+  text-decoration: underline; /* Add underline on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+/* Share Button Styles */
+.share-button {
+  padding: 0.5rem 1rem; /* Add padding for better click area */
+  background: var(--primary-color); /* Filled background */
+  color: white; /* White text */
+  border: 2px solid var(--primary-color); /* Outline style */
+  border-radius: 4px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  position: relative; /* For underline effect */
+}
+
+.share-button:hover {
+  background: transparent; /* Remove background on hover */
+  color: var(--primary-color); /* Change text color to primary */
+  border-color: transparent; /* Remove outline on hover */
+  text-decoration: underline; /* Add underline on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+.share-button:hover .button-icon {
+  fill: var(--primary-color);
+}
+
+.share-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.share-popup h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.share-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.share-popup li {
+  margin-bottom: 0.5rem;
+}
+
+.share-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.share-logo {
+  width: 20px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 0.5rem; /* Space between logo and text */
+}
+
+.close-popup-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close-popup-button:hover {
+  opacity: 0.9;
 }
