@@ -77,3 +77,6 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Close share popup when clicked outside of it.
+
+### Fixed
+- Fixed Footer container responsiveness.
