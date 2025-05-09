@@ -53,10 +53,10 @@ function StrandsPage() {
   const strands = [
     // Academic Strands
     {
-      id: 'stem',
-      name: 'Science, Technology, Engineering, and Mathematics',
-      color: '#800000',
-      description: 'Research papers focused on scientific innovation, mathematical models, and technological advancements.',
+      id: 'abm',
+      name: 'Accountancy, Business, and Management',
+      color: '#ffd700',
+      description: 'Research on business practices, economic theories, entrepreneurship, and financial systems.',
       category: 'academic'
     },
     {
@@ -67,18 +67,19 @@ function StrandsPage() {
       category: 'academic'
     },
     {
-      id: 'abm',
-      name: 'Accountancy, Business, and Management',
-      color: '#ffd700',
-      description: 'Research on business practices, economic theories, entrepreneurship, and financial systems.',
+      id: 'stem',
+      name: 'Science, Technology, Engineering, and Mathematics',
+      color: '#800000',
+      description: 'Research papers focused on scientific innovation, mathematical models, and technological advancements.',
       category: 'academic'
     },
+
     // TVL Strands
     {
-      id: 'ict',
-      name: 'Information and Communication Technology',
-      color: '#0a2463',
-      description: 'Papers on computer systems, software development, networking, and digital communications.',
+      id: 'afa',
+      name: 'Agri-Fishery Arts',
+      color: '#8B4513',
+      description: 'Research on agricultural practices, aquaculture, sustainable farming, and food production.',
       category: 'tvl'
     },
     {
@@ -89,10 +90,10 @@ function StrandsPage() {
       category: 'tvl'
     },
     {
-      id: 'afa',
-      name: 'Agri-Fishery Arts',
-      color: '#8B4513',
-      description: 'Research on agricultural practices, aquaculture, sustainable farming, and food production.',
+      id: 'ict',
+      name: 'Information and Communication Technology',
+      color: '#0a2463',
+      description: 'Papers on computer systems, software development, networking, and digital communications.',
       category: 'tvl'
     }
   ];
@@ -124,6 +125,7 @@ function StrandsPage() {
               className="strand-card"
               data-aos="fade-up"
               data-aos-delay={50 + index * 80}  // Start at 50ms then increment 80ms per card
+              style={{ '--strand-color': strand.color }}
             >
               <div className="strand-banner" style={{ backgroundColor: strand.color }}>
                 <h2 className="strand-title">{strand.id.toUpperCase()}</h2>
@@ -156,6 +158,7 @@ function StrandsPage() {
               className="strand-card"
               data-aos="fade-up"
               data-aos-delay={50 + index * 80}
+              style={{ '--strand-color': strand.color }}
             >
               <div className="strand-banner" style={{ backgroundColor: strand.color }}>
                 <h2 className="strand-title">{strand.id.toUpperCase()}</h2>

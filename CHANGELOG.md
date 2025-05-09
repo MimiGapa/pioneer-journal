@@ -43,7 +43,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Simple Skeleton Loader for the Notable Research Paper section on the Home Page and the research papers per Strand Page.
 
-## [1.3.0] - 2025-05-02
+## [1.2.1] - 2025-05-02
 
 ### Changed
 - Enhanced UI of Home page.
@@ -52,7 +52,7 @@ All notable changes to this project will be documented in this file.
 - Fixed Mobile Responsiveness (research papers in the Strand Page).
 - Fixed Aspect ratio of logo in the Footer.
 
-## [1.4.0] - 2025-05-07
+## [1.3.0] - 2025-05-07
 
 ### Added
 - Favicons for different devices.
@@ -62,7 +62,7 @@ All notable changes to this project will be documented in this file.
 - Changed the Favicon logo.
 - Matched the background color of the Splash Animation.
 
-## [1.5.0] - 2025-05-08
+## [1.4.0] - 2025-05-08
 
 ### Added
 - Download PDF and Share button (Email, Facebook, X, LinkedIn, Reddit, WhatsApp, Telegram, Messenger, Threads).
@@ -73,10 +73,15 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Fixed Footer container alignment and its responsiveness.
 
-## [1.6.0] - 2025-05-09
+## [1.5.0] - 2025-05-09
 
 ### Added
 - Close share popup when clicked outside of it.
+- Show more button on Viewer Page.
+- Outline Section on Viewer Page.
+
+### Changed
+- Hover buttons (SearchBar, Back button on Viewer Page, Strand info h3 on Strands Page).
 
 ### Fixed
 - Fixed Footer container responsiveness.

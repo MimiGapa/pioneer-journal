@@ -1,8 +1,3 @@
-/* ------------------------------- */
-/* Existing styles (unchanged) */
-/* ------------------------------- */
-
-/* Center the strand title and paper count */
 .strand-banner {
   display: flex;
   flex-direction: column;
@@ -17,8 +12,13 @@
 }
 
 .paper-count {
-  margin-left: 0;
-  margin-top: 10px;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
 }
 
 .strand-banner .strand-title,
@@ -44,17 +44,6 @@
 .strand-card, 
 .strand-card:hover {
   text-decoration: none !important;
-}
-
-.paper-count {
-  display: inline-block;
-  background-color: rgba(255, 255, 255, 0.25);
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 14px;
-  margin-left: 10px;
-  font-weight: normal;
-  color: white;
 }
 
 .strands-page {
@@ -144,6 +133,14 @@
 .strand-info h3 {
   margin: 0 0 1rem 0;
   color: #333;
+}
+
+.strand-card .strand-info h3 {
+    transition: color 0.3s ease-in-out;
+}
+
+.strand-card:hover .strand-info h3 {
+  color: var(--strand-color);
 }
 
 .strand-info p {

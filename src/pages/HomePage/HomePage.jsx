@@ -13,12 +13,12 @@ function HomePage() {
 
   // Strand colors and categories
   const strandInfo = {
-    stem: { name: 'Science, Technology, Engineering, and Mathematics', color: '#800000', type: 'academic' },
-    humss: { name: 'Humanities and Social Sciences', color: '#3C7B15', type: 'academic' },
     abm: { name: 'Accountancy, Business, and Management', color: '#ffd700', type: 'academic' },
-    ict: { name: 'Information and Communication Technology', color: '#0a2463', type: 'tvl' },
-    he: { name: 'Home Economics', color: '#ff69b4', type: 'tvl' },
+    humss: { name: 'Humanities and Social Sciences', color: '#3C7B15', type: 'academic' },
+    stem: { name: 'Science, Technology, Engineering, and Mathematics', color: '#800000', type: 'academic' },
     afa: { name: 'Agri-Fishery Arts', color: '#8B4513', type: 'tvl' },
+    he: { name: 'Home Economics', color: '#ff69b4', type: 'tvl' },
+    ict: { name: 'Information and Communication Technology', color: '#0a2463', type: 'tvl' },
   };
 
   useEffect(() => {
@@ -195,11 +195,11 @@ function HomePage() {
         data-aos="fade-up"
         data-aos-delay="100"
       >
-        <h3 data-aos="fade-up" data-aos-delay="150">Browse by Category</h3>
+        <h3 data-aos="fade-up" data-aos-delay="150">Browse by Strands</h3>
         
         <div className="strand-categories" data-aos="fade-up" data-aos-delay="200">
           <div className="strand-category">
-            <h4 data-aos="fade-up" data-aos-delay="250">Academic Strands</h4>
+            <h4 data-aos="fade-up" data-aos-delay="250">Academic</h4>
             <div className="strand-links">
               {Object.entries(strandInfo)
                 .filter(([_, info]) => info.type === 'academic')
@@ -220,7 +220,7 @@ function HomePage() {
           
           <div className="strand-category">
             <h4 data-aos="fade-up" data-aos-delay="250">
-              Technical-Vocational-Livelihood (TVL) Strands
+              Technical-Vocational-Livelihood (TVL)
             </h4>
             <div className="strand-links">
               {Object.entries(strandInfo)
