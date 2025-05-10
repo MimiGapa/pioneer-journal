@@ -18,8 +18,14 @@ function ViewerPage() {
   const [showMilestones, setShowMilestones] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isOutlineOpen, setIsOutlineOpen] = useState(false);
+
+  // Ref for the share popup (remains unchanged)
   const popupRef = useRef(null);
+  // Ref for the mobile Outline button
   const outlineButtonRef = useRef(null);
+  // Separate ref for the mobile outline popup
+  const outlinePopupRef = useRef(null);
+
   const googleViewerUrl = getGoogleViewerUrl(paperId);
 
   useEffect(() => {
@@ -51,13 +57,23 @@ function ViewerPage() {
     loadMetadata();
   }, [paperId]);
 
+  // Add the document-level click handler only for mobile devices
   useEffect(() => {
     function handleClickOutside(event) {
+      // Only check mobile outline popup logic on non-desktop screens
+      if (window.innerWidth <= 900) {
+        if (
+          outlineButtonRef.current &&
+          outlinePopupRef.current &&
+          !outlineButtonRef.current.contains(event.target) &&
+          !outlinePopupRef.current.contains(event.target)
+        ) {
+          setIsOutlineOpen(false);
+        }
+      }
+      // Always close share popup if click occurs outside of it.
       if (popupRef.current && !popupRef.current.contains(event.target)) {
         setIsSharePopupOpen(false);
-      }
-      if (outlineButtonRef.current && !outlineButtonRef.current.contains(event.target)) {
-        setIsOutlineOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -78,9 +94,7 @@ function ViewerPage() {
     });
   }
   breadcrumbItems.push({
-    label: paperMetadata.title.length > 30
-      ? paperMetadata.title.substring(0, 30) + "..."
-      : paperMetadata.title,
+    label: paperMetadata.title.length > 30 ? paperMetadata.title.substring(0, 30) + "..." : paperMetadata.title,
     path: `/view/${strandId}/${paperId}`
   });
 
@@ -126,26 +140,21 @@ function ViewerPage() {
       logo: "/assets/icons/telegram-icon.svg",
     },
     {
-      name: "Messenger",
-      url: `https://www.messenger.com/share?link=${shareUrl}`,
-      logo: "/assets/icons/messenger-icon.svg",
-    },
-    {
       name: "Threads",
       url: `https://www.threads.net/intent/post?text=${shareText}%0A%0A${shareUrl}`,
       logo: "/assets/icons/threads-icon.svg",
     },
   ];
 
-  // Helper: close the popup then scroll to the section after a short delay.
+  // For mobile: scroll to selected section and then close the mobile popup.
+  // Added an extra offset for screens <= 768px
   const scrollToSection = (sectionId) => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const offset = window.innerWidth <= 768 ? 120 : 80;
+      window.scrollTo({ top: el.offsetTop - offset, behavior: "smooth" });
+    }
     setIsOutlineOpen(false);
-    setTimeout(() => {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
-      }
-    }, 100);
   };
 
   return (
@@ -168,7 +177,10 @@ function ViewerPage() {
                   href="#abstract"
                   onClick={(e) => {
                     e.preventDefault();
-                    window.scrollTo({ top: document.getElementById("abstract").offsetTop - 80, behavior: "smooth" });
+                    window.scrollTo({
+                      top: document.getElementById("abstract").offsetTop - 80,
+                      behavior: "smooth"
+                    });
                   }}
                 >
                   Abstract
@@ -179,7 +191,10 @@ function ViewerPage() {
                   href="#keywords"
                   onClick={(e) => {
                     e.preventDefault();
-                    window.scrollTo({ top: document.getElementById("keywords").offsetTop - 80, behavior: "smooth" });
+                    window.scrollTo({
+                      top: document.getElementById("keywords").offsetTop - 80,
+                      behavior: "smooth"
+                    });
                   }}
                 >
                   Keywords
@@ -230,7 +245,7 @@ function ViewerPage() {
                   </button>
                   {/* Mobile Outline Popup */}
                   {isOutlineOpen && (
-                    <div className="outline-popup" ref={popupRef}>
+                    <div className="outline-popup" ref={outlinePopupRef}>
                       <h3>Outline</h3>
                       <hr className="outline-divider" />
                       <nav role="navigation" aria-label="Table of Contents">

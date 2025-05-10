@@ -4,7 +4,6 @@ import './Footer.css';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
-  
   return (
     <footer className="footer">
       <div className="footer-main">
@@ -22,23 +21,33 @@ function Footer() {
               </p>
             </div>
           </div>
-          
           <div className="footer-contact">
-            <h4>Contact Us</h4>
+            <h4>School Contact</h4>
             <ul className="footer-links">
-              <li><i className="fas fa-map-marker-alt"></i> L. de Leon St., Siniloan, Laguna</li>
-              <li><i className="fas fa-phone"></i> (049) 591-0182</li>
-              <li><i className="fas fa-envelope"></i> 301273@deped.gov.ph</li>
               <li>
-                <a href="https://www.facebook.com/DepedTayoSINHS301273" target="_blank" rel="noopener noreferrer" className="social-link">
-                  <i className="fab fa-facebook-f"></i> Deped Tayo Siniloan INHS - Laguna
+                <i className="fas fa-map-marker-alt"></i> L. de Leon St., Siniloan, Laguna
+              </li>
+              <li>
+                <i className="fas fa-phone"></i> (049) 591-0182
+              </li>
+              <li>
+                <i className="fas fa-envelope"></i>{" "}
+                <a className="social-link" href="mailto:301273@deped.gov.ph">Email</a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/DepedTayoSINHS301273"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
+                  <i className="fab fa-facebook-f"></i>Deped Tayo Siniloan INHS - Laguna
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      
       <div className="footer-legal">
         <div className="container">
           <p className="copyright">
@@ -46,12 +55,12 @@ function Footer() {
             Siniloan Integrated National High School. <span style={{ whiteSpace: 'nowrap' }}>All Rights Reserved.</span>
           </p>
           <p className="legal-text">
-            All materials, including research papers, images, and other content on this website, are the intellectual property of 
+            All materials, including research papers, images, and other content on this website, are the intellectual property of
             Siniloan Integrated National High School or their respective authors. Unauthorized reproduction, distribution, or use of any content is strictly prohibited without written permission.
           </p>
           <p className="disclaimer">
-            This website is provided for academic and educational purposes only. The views expressed in the research papers 
-            are those of the original authors and do not necessarily reflect the official policy or position of 
+            This website is provided for academic and educational purposes only. The views expressed in the research papers
+            are those of the original authors and do not necessarily reflect the official policy or position of
             Siniloan Integrated National High School.
           </p>
           <p className="repo-link">
