@@ -39,11 +39,13 @@ E:.
 |   |   +---animations
 |   |   |   |   splashAnimation.json
 |   |   +---icons
+|   |   |   |   download-pdf-icon.svg
 |   |   |   |   email-icon.svg
 |   |   |   |   facebook-icon.svg
 |   |   |   |   linkedin-icon.svg
 |   |   |   |   messenger-icon.svg
 |   |   |   |   reddit-icon.svg
+|   |   |   |   share-icon.svg
 |   |   |   |   telegram-icon.svg
 |   |   |   |   threads-icon.svg
 |   |   |   |   whatsapp-icon.svg
@@ -62,19 +64,17 @@ E:.
     |   App.css
     |   App.jsx
     +---assets
-    |   +---fonts
-    |   |   |   KievitSerif-Bold.woff
-    |   |   |   KievitSerif-Bold.woff2
-    |   |   |   KievitSerif-Book.woff
-    |   |   |   KievitSerif-Book.woff2
-    |   |   |   KievitSerif-BookItalic.woff
-    |   |   |   KievitSerif-BookItalic.woff2
-    |   |   |   Novecentosansnarrow-DemiBold.woff
-    |   |   |   Novecentosansnarrow-DemiBold.woff2
-    |   |   |   OldEnglishFive.woff
-    |   |   |   OldEnglishFive.woff2
-    |   +---icons
-    |   \---images
+    |   \---fonts
+    |       |   KievitSerif-Bold.woff
+    |       |   KievitSerif-Bold.woff2
+    |       |   KievitSerif-Book.woff
+    |       |   KievitSerif-Book.woff2
+    |       |   KievitSerif-BookItalic.woff
+    |       |   KievitSerif-BookItalic.woff2
+    |       |   Novecentosansnarrow-DemiBold.woff
+    |       |   Novecentosansnarrow-DemiBold.woff2
+    |       |   OldEnglishFive.woff
+    |       |   OldEnglishFive.woff2
     +---components
     |   +---BackToTop
     |   |   |   BackToTop.css
@@ -83,6 +83,9 @@ E:.
     |   +---Breadcrumbs
     |   |   |   Breadcrumbs.css
     |   |   |   Breadcrumbs.jsx
+    |   +---Feedback
+    |   |   |   Feedback.css
+    |   |   |   Feedback.jsx
     |   +---Footer
     |   |   |   Footer.css
     |   |   |   Footer.jsx
@@ -112,6 +115,9 @@ E:.
     |   +---HomePage
     |   |   |   HomePage.css
     |   |   |   HomePage.jsx
+    |   +---ReportErrorInstructions
+    |   |   |   ReportErrorInstructions.css
+    |   |   |   ReportErrorInstructions.jsx
     |   +---SearchResultsPage
     |   |   |   SearchResultsPage.css
     |   |   |   SearchResultsPage.jsx
@@ -124,6 +130,9 @@ E:.
     |   +---StrandsPage
     |   |   |   StrandsPage.css
     |   |   |   StrandsPage.jsx
+    |   +---SupportCenter
+    |   |   |   SupportCenter.css
+    |   |   |   SupportCenter.jsx
     |   \---ViewerPage
     |       |   ViewerPage.css
     |       |   ViewerPage.jsx

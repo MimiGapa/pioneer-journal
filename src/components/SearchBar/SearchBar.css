@@ -166,8 +166,10 @@
 }
 
 .search-field select,
-.search-field select option {
+.search-field select option,
+.advanced-search-actions button {
   font-family: 'Kievit Serif Book', serif;
+  font-size: 0.9rem;
 }
 
 .advanced-search-actions {
@@ -205,8 +207,9 @@
 }
 
 .search-submit-button:hover {
-  background: #002559; /* Hover background */
+  background: #1565c0; /* Hover background */
   color: white;
+  box-shadow: 0px 0px 0px rgba(0,0,0,0);
 }
 
 .search-submit-button:disabled {

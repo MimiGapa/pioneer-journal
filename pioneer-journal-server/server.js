@@ -4,6 +4,7 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
+const nodemailer = require('nodemailer');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -17,6 +18,40 @@ app.use(cors({
 // Root endpoint
 app.get('/', (req, res) => {
   res.send('PDF Proxy Server is running');
+});
+
+app.use(express.json()); // Enable JSON parsing
+
+// Setup Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail', // Using Gmail SMTP
+  auth: {
+    user: "pioneerjournal25@gmail.com",
+    pass: "oxxz qymv lfqw kzgc"
+  }
+});
+
+// New Endpoint: Handle Form Submissions & Send Email
+app.post('/send-email', async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  if (!name || !email || !subject || !message) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  try {
+    await transporter.sendMail({
+      from: email,
+      to: "pioneerjournal25@gmail.com",
+      subject: `New Inquiry: ${subject}`,
+      text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`
+    });
+
+    res.status(200).json({ success: true, message: "Your inquiry has been sent successfully!" });
+  } catch (error) {
+    console.error("Error sending email:", error.message);
+    res.status(500).json({ error: "Failed to send email", details: error.message });
+  }
 });
 
 // Keep the service alive - prevents Render free tier from sleeping
@@ -183,6 +218,7 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`Accessible at http://localhost:${PORT}`);
   console.log(`Also accessible at http://192.168.11.183:${PORT}`);
   console.log('Server started at:', new Date().toISOString());
+  console.log(`Server running on port ${PORT}`);
 });
 
 // Global error handler

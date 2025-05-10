@@ -87,7 +87,21 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+.mobile-feedback-button {
+  background: none;
+  border: none;
+  color: #333;
+  text-align: left;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+
+.mobile-feedback-button:hover {
+  background-color: #1565c0; /* Hover color */
+}
+
+@media (max-width: 900px) {
   .header-content {
     padding: 0.75rem 1rem;
   }
@@ -129,5 +143,9 @@
     display: block;
     padding: 0.75rem 1rem;
     border-top: 1px solid #f0f0f0;
+  }
+
+  .mobile-only {
+    display: contents;
   }
 }

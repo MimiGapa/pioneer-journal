@@ -85,3 +85,24 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Fixed Footer container responsiveness.
+
+## [1.5.0] 2025-05-10
+
+### Added
+- Feedback button.
+- Pages dedicated for: Report Error Instructions and Support Center.
+
+### Changed
+- UI of popup outline for non-desktop screens.
+- School email visibility in the footer.
+
+### Fixed
+- Fixed outline button function for non-desktop screens.
+
+## [1.6.0] 2025-05-11
+
+### Changed
+- UI and Content of Report Error Instructions and Support Center Page.
+
+### Fixed
+- Feedback button responsiveness.

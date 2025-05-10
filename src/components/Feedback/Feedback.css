@@ -1,0 +1,167 @@
+.feedback-button {
+  position: fixed;
+  bottom: 100px;
+  right: 0;
+  background-color: #1565c0;
+  color: white;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  padding: 0.75rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  transition: width 0.3s ease;
+}
+
+.feedback-button:hover {
+  width: 120px;
+  background-color: #0d47a1; /* Hover color */
+}
+
+.feedback-button .feedback-text {
+  display: none;
+  margin-left: 0.5rem;
+}
+
+.feedback-button:hover .feedback-text {
+  display: inline;
+}
+
+.feedback-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.feedback-modal {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 400px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: #333;
+}
+
+.feedback-option button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: 'Novecento sans narrow', sans-serif;
+  background-color: var(--primary-color);
+  color: white;
+  transition: all 250ms ease-in-out;
+}
+
+.feedback-option button:hover {
+  background-color: #1565c0;
+}
+
+.feedback-suggestion textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.feedback-suggestion textarea:focus {
+  outline: none;
+  border-color: #1565c0;
+}
+
+.feedback-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.return-btn {
+  background: transparent;
+  padding: 8px 16px;
+  outline: 1.5px solid #0d47a1;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Novecento sans narrow', sans-serif;
+  font-size: medium;
+  font-weight: 500;
+  color: var(--primary-color);
+  transition: all 250ms ease-in-out;
+}
+
+.return-btn:hover {
+  outline-color: transparent;
+  outline-width: 1.5px;
+  background-color: #e7ecef;
+}
+
+.send-feedback-btn {
+  background: var(--primary-color); 
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Novecento sans narrow', sans-serif;
+  font-weight: 500;
+  font-size: medium;
+  transition: all 250ms ease-in-out;
+}
+
+.send-feedback-btn:hover {
+  background: #1565c0; /* Hover background */
+  color: white;
+}
+
+.character-counter {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .feedback-button {
+    display: none; /* Hide feedback btn on mobile */
+  }
+}
+
+@media (min-width: 901px) { /* Hide mobile feedback btn on desktop */
+  .mobile-feedback-button {
+    display: none;
+  }
+}
