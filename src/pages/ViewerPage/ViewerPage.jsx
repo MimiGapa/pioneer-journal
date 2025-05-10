@@ -132,7 +132,7 @@ function ViewerPage() {
     },
     {
       name: "Threads",
-      url: `https://www.threads.net/share?url=${shareUrl}&text=${shareText}`,
+      url: `https://www.threads.net/intent/post?text=${shareText}%0A%0A${shareUrl}`,
       logo: "/assets/icons/threads-icon.svg",
     },
   ];
