@@ -105,4 +105,5 @@ All notable changes to this project will be documented in this file.
 - UI and Content of Report Error Instructions and Support Center Page.
 
 ### Fixed
-- Feedback button responsiveness.
+- Fixed Feedback button responsiveness.
+- Fixed Send/ Submit Feedback mechanism.

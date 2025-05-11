@@ -160,7 +160,7 @@
   }
 }
 
-@media (min-width: 901px) { /* Hide mobile feedback btn on desktop */
+@media (min-width: 0px) { /* Hide mobile feedback btn on desktop (901px) */
   .mobile-feedback-button {
     display: none;
   }
