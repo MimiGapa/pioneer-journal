@@ -35,3 +35,8 @@ Thumbs.db
 
 # Local metadata copy (symbolic link)
 public/metadata.json
+
+# Local dev
+metadata-generator.html
+structure.txt
+1structure.txt
