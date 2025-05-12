@@ -149,7 +149,7 @@ function StrandPage() {
            data-aos="fade-up"
            data-aos-delay={aosDelay}>
         <div className="paper-icon">
-          <i className={`fas ${isFeatured ? 'fa-award' : 'fa-file-alt'}`}></i>
+          <i className={`fas ${isFeatured ? 'fa-award' : 'fa-file-alt'}`} aria-hidden="true"></i>
         </div>
         <div className="paper-info">
           {isFeatured && showFeatured && <div className="featured-badge">Notable</div>}
@@ -201,7 +201,7 @@ function StrandPage() {
             title={sortDirection === 'asc' ? 'Sort Z-A' : 'Sort A-Z'}
           >
             Sort {sortDirection === 'asc' ? 'A-Z' : 'Z-A'}
-            <i className={`fas fa-sort-alpha-${sortDirection === 'asc' ? 'down' : 'up'}`}></i>
+            <i className={`fas fa-sort-alpha-${sortDirection === 'asc' ? 'down' : 'up'}`} aria-hidden="true"></i>
           </button>
         </div>
 

@@ -19,7 +19,7 @@ function Breadcrumbs({ items }) {
                     {item.label}
                   </Link>
                   <span className="breadcrumb-separator">
-                    <i className="fas fa-chevron-right"></i>
+                    <i className="fas fa-chevron-right" aria-hidden="true"></i>
                   </span>
                 </>
               )}

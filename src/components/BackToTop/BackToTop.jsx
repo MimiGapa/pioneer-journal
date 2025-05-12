@@ -34,9 +34,9 @@ function BackToTop() {
           onClick={scrollToTop} 
           className="back-to-top"
           aria-label="Back to top"
-          title="Back to top"
         >
-          <i className="fas fa-arrow-up"></i>
+          <i className="fas fa-arrow-up" aria-hidden="true"></i>
+          <span className="sr-only">Back to top</span>
         </button>
       }
     </>

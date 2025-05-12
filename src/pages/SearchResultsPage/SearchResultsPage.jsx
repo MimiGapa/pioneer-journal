@@ -172,7 +172,7 @@ function SearchResultsPage() {
           {notableFilter && (
             <span className="search-filters">
               <span className="highlight notable-indicator">
-                <i className="fas fa-award"></i> Notable papers only
+                <i className="fas fa-award" aria-hidden="true"></i> Notable papers only
               </span>
             </span>
           )}
@@ -220,7 +220,7 @@ function SearchResultsPage() {
                 >
                   <h3 className="result-title">
                     <Link to={`/view/${paperStrand}/${paper.id}`}>
-                      {isNotable && <i className="fas fa-award notable-icon"></i>}
+                      {isNotable && <i className="fas fa-award notable-icon" aria-hidden="true"></i>}
                       <Highlighter
                         highlightClassName="highlight"
                         searchWords={queryWords}

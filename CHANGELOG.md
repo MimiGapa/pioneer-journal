@@ -86,7 +86,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Fixed Footer container responsiveness.
 
-## [1.5.0] 2025-05-10
+## [1.6.0] 2025-05-10
 
 ### Added
 - Feedback button.
@@ -99,7 +99,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Fixed outline button function for non-desktop screens.
 
-## [1.6.0] 2025-05-11
+## [1.7.0] 2025-05-11
 
 ### Changed
 - UI and Content of Report Error Instructions and Support Center Page.
@@ -107,3 +107,22 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Fixed Feedback button responsiveness.
 - Fixed Send/ Submit Feedback mechanism.
+
+### Removed
+- Mobile feedback button.
+
+## [1.8.0] 2025-05-12
+
+### Added
+- Menu toggle transition.
+- Alt and aria labels.
+- Search Suggestion in Search Bar.
+- SEO Meta Tags.
+
+### Changed
+- Mobile menu toggle mechanism.
+- Github color link in Footer.
+- Pngs to WebP.
+
+### Fixed
+- Github repo.

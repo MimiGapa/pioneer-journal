@@ -162,7 +162,7 @@ function ViewerPage() {
       <Breadcrumbs items={breadcrumbItems} />
       <div className="viewer-header">
         <Link to={`/strand/${strandId}`} className="back-button">
-          <i className="fas fa-arrow-left"></i> Back to {strandId.toUpperCase()} papers
+          <i className="fas fa-arrow-left" aria-hidden="true"></i> Back to {strandId.toUpperCase()} papers
         </Link>
       </div>
       <div className="viewer-content">
@@ -230,7 +230,7 @@ function ViewerPage() {
                     aria-expanded={showMilestones}
                   >
                     {showMilestones ? "Show less" : "Show more"}
-                    <i className={showMilestones ? "fas fa-chevron-up" : "fas fa-chevron-down"}></i>
+                    <i className={showMilestones ? "fas fa-chevron-up" : "fas fa-chevron-down"} aria-hidden="true"></i>
                   </button>
                   {/* Mobile Outline Button */}
                   <button

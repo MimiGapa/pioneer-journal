@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { getMetadata } from '../../utils/driveService';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -103,6 +104,25 @@ function StrandsPage() {
   const tvlStrands = strands.filter(strand => strand.category === 'tvl');
 
   return (
+    <>
+      <Helmet>
+        <title>Senior High School Strands | Pioneer Journal</title>
+        <meta 
+        name="description"
+        content="Explore research papers from various senior high school strands, including academic tracks like ABM, HUMSS, STEM, and TVL tracks such as AFA, HE, and ICT."
+        />
+        <meta
+          name="keywords"
+          content="research papers, senior high school, strands, ABM, HUMSS, STEM, TVL, AFA, HE, ICT"
+        />
+        <meta property="og:title" content="Senior High School Strands | Pioneer Journal"/>
+        <meta
+          property="og:description"
+          content="Explore research papers from various senior high school strands."
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      
     <div className="strands-page">
       <div className="strands-header">
         {/* Header now contains one single line */}
@@ -111,7 +131,7 @@ function StrandsPage() {
           Explore research papers across different academic and technical-vocational disciplines
         </p>
       </div>
-
+  
       {/* Academic Strands Section */}
       <div className="strand-category-section">
         <h2 className="strand-category-title" data-aos="fade-up" data-aos-delay="50">
@@ -178,6 +198,7 @@ function StrandsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

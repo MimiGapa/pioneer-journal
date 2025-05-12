@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import Lottie from 'react-lottie';
-import animationData from '../../../public/assets/animations/splashAnimation.json';
 import "./SplashScreen.css";
 
 function SplashScreen({ onFinish }) {
@@ -16,8 +14,10 @@ function SplashScreen({ onFinish }) {
   return (
     <div className="splash-container">
       <div className="splash-content">
-        {/* Replace the below with your logo and text per your Figma design */}
-        <img src="/assets/logos/PJ_research.png" alt="Site Logo" className="splash-logo" />
+        <picture>
+          <source srcSet="/assets/logos/PJ_research.webp" type="image/webp" />
+          <img src="/assets/logos/PJ_research.png" alt="PioneerJournal Logo" className="splash-logo" />
+        </picture>
         <h1 className="splash-title">The Pioneer Journal</h1>
       </div>
     </div>

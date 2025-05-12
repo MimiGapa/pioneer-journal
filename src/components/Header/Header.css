@@ -87,20 +87,6 @@
   cursor: pointer;
 }
 
-.mobile-feedback-button {
-  background: none;
-  border: none;
-  color: #333;
-  text-align: left;
-  font-weight: 500;
-  padding: 0.75rem 1rem;
-  width: 100%;
-}
-
-.mobile-feedback-button:hover {
-  background-color: #1565c0; /* Hover color */
-}
-
 @media (max-width: 900px) {
   .header-content {
     padding: 0.75rem 1rem;
@@ -113,30 +99,102 @@
   .logo-text {
     font-size: 1.3rem;
   }
-  
+
   .menu-toggle {
     display: block;
+    position: absolute;
+    top: 8px;
+    right: 1rem;
+    padding-bottom: 12px;
+    font-size: 1.5rem;
+    z-index: 9999;
+    transition: transform 0.3s ease;
   }
-  
+
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    backdrop-filter: blur(5px); /* Optional: Adds slight blur */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 10;
+  }
+
+    /* When menu opens, show overlay */
+    .nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Icon Bars */
+  .menu-toggle .icon-bars {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%); /* Hides the icon from the left */
+    transition: opacity 0.3s ease, clip-path 0.3s ease-in-out;
+  }
+
+  .main-nav.open .menu-toggle .icon-bars {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%);
+  }
+
+  .main-nav:not(.open) .menu-toggle .icon-bars {
+    opacity: 1;
+    clip-path: inset(0 0 0 0); /* Reveals from left side */
+  }
+
+  /* Icon Times */
+  .menu-toggle .icon-times {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+    transition: opacity 0.3s ease, transform 0.3s ease-in-out;
+    position: absolute;
+    top: 8px;
+    right: 1rem;
+  }
+
+  .main-nav.open .menu-toggle .icon-times {
+    opacity: 1;
+    transform: scale(1) rotate(180deg); /* Spins and grows */
+  }
+
+  .main-nav:not(.open) .menu-toggle .icon-times {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg); /* Shrinks and disappears */
+  }
+
   .main-nav {
     flex-direction: column;
     align-items: flex-start;
   }
   
   .nav-links {
-    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Start off-screen to the right */
+    height: 100vh;
+    width: 380px;
+    background-color: white;
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
     flex-direction: column;
-    width: 100%;
+    padding: 3.5rem 1rem;
+    transition: right 0.3s ease-in-out;
+    z-index: 100;
   }
-  
+
   .main-nav.open .nav-links {
-    display: flex;
+    right: 0;
   }
   
   .nav-links li {
     margin: 0;
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
   
   .nav-links a {
@@ -147,5 +205,22 @@
 
   .mobile-only {
     display: contents;
+  }
+
+  .mobile-feedback-button {
+  background-color: transparent;
+  display: block;
+  border-top: 1px solid #f0f0f0;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+  text-align: left;
+  font-family: 'Kievit Serif Book', serif;
+  font-size: 1rem;
+  transition: color 0.2s;
+  }
+
+  .mobile-feedback-button:hover {
+    color: #1565c0;
   }
 }

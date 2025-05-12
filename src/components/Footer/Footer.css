@@ -160,10 +160,29 @@
     text-align: center;
   }
   
+  .footer-links a {
+    font-weight: 600px;
+    font-size: 1rem;
+  }
+  
   .footer-links li {
     justify-content: center;
+    font-size: 1rem;
+  }
+
+  .footer-contact h4 {
+    display: block;
+    width: 100%;
+    text-align: center; /* Specifically centers the heading */
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
+
 
 /* Rule for Old English font on the school name */
 .old-english {

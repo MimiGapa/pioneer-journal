@@ -10,7 +10,10 @@ function Footer() {
         <div className="container footer-container">
           <div className="footer-info">
             <div className="footer-logo">
-              <img src="/assets/logos/SINHS_logo.png" alt="SINHS Logo" />
+              <picture>
+                <source srcSet="/assets/logos/SINHS_logo.webp" type="image/webp" />
+                <img src="/assets/logos/SINHS_logo.png" alt="SINHS Logo" />
+              </picture>
             </div>
             <div className="footer-content">
               <h3 className="old-english">
@@ -25,24 +28,24 @@ function Footer() {
             <h4>School Contact</h4>
             <ul className="footer-links">
               <li>
-                <i className="fas fa-map-marker-alt"></i> L. de Leon St., Siniloan, Laguna
-              </li>
-              <li>
-                <i className="fas fa-phone"></i> (049) 591-0182
-              </li>
-              <li>
-                <i className="fas fa-envelope"></i>{" "}
-                <a className="social-link" href="mailto:301273@deped.gov.ph">Email</a>
-              </li>
-              <li>
                 <a
                   href="https://www.facebook.com/DepedTayoSINHS301273"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
                 >
-                  <i className="fab fa-facebook-f"></i>Deped Tayo Siniloan INHS - Laguna
+                  <i className="fab fa-facebook-f" aria-hidden="true"></i>Deped Tayo Siniloan INHS - Laguna
                 </a>
+              </li>
+              <li>
+                <i className="fas fa-map-marker-alt" aria-hidden="true"></i> L. de Leon St., Siniloan, Laguna
+              </li>
+              <li>
+                <i className="fas fa-phone" aria-hidden="true"></i> (049) 591-0182
+              </li>
+              <li>
+                <i className="fas fa-envelope" aria-hidden="true"></i>{" "}
+                <a className="social-link" href="mailto:301273@deped.gov.ph">Email</a>
               </li>
             </ul>
           </div>
@@ -65,7 +68,7 @@ function Footer() {
           </p>
           <p className="repo-link">
             <a href="https://github.com/MimiGapa/pioneer-journal.git" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-github"></i> View GitHub Repository
+              <i className="fab fa-github" aria-hidden="true"></i> View GitHub Repository
             </a>
           </p>
         </div>

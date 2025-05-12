@@ -87,12 +87,12 @@ function SupportCenter() {
       <form onSubmit={handleSubmit} className="support-form" ref={formRef}>
         <div className={`form-group ${errors.name ? 'error' : ''}`}>
           <label>Name<span className="required">*</span></label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
+          <input type="text" name="name" aria-label="Name" value={formData.name} onChange={handleChange} />
           {errors.name && <span className="error-text">{errors.name}</span>}
         </div>
         <div className={`form-group ${errors.email ? 'error' : ''}`}>
           <label>Email<span className="required">*</span></label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
+          <input type="email" name="email" aria-label="Email" value={formData.email} onChange={handleChange} />
           {errors.email && <span className="error-text">{errors.email}</span>}
         </div>
         <div className={`form-group ${errors.confirmEmail ? 'error' : ''}`}>
@@ -100,6 +100,7 @@ function SupportCenter() {
           <input
             type="email"
             name="confirmEmail"
+            aria-label="Confirm Email"
             value={formData.confirmEmail}
             onChange={handleChange}
             className={formData.email && formData.confirmEmail ? (formData.email === formData.confirmEmail ? 'valid' : 'invalid') : ''}
@@ -108,7 +109,7 @@ function SupportCenter() {
         </div>
         <div className={`form-group ${errors.subject ? 'error' : ''}`}>
           <label>Subject<span className="required">*</span></label>
-          <input type="text" name="subject" value={formData.subject} onChange={handleChange} />
+          <input type="text" name="subject" aria-label="Subject" value={formData.subject} onChange={handleChange} />
           {errors.subject && <span className="error-text">{errors.subject}</span>}
         </div>
         <div className={`form-group ${errors.message ? 'error' : ''}`}>
@@ -116,6 +117,7 @@ function SupportCenter() {
           <div className="message-container">
             <textarea
               name="message"
+              aria-label="Message"
               value={formData.message}
               onChange={handleMessageChange}
               className={`expandable-textarea ${formData.message.length > 500 ? "exceed-limit" : ""}`}
