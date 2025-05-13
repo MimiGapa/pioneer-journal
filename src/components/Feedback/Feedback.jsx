@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Feedback.css';
 
-function Feedback({ onClose }) {
+function Feedback({ isModalOpen, setIsModalOpen }) {
   const navigate = useNavigate();
-  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [feedbackType, setFeedbackType] = useState(null);
   const [suggestText, setSuggestText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFeedbackClick = () => {
-    setIsFeedbackOpen(true);
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setIsFeedbackOpen(false);
+    setIsModalOpen(false);
     setFeedbackType(null);
     setSuggestText('');
-    if (onClose) onClose();
   };
 
   const handleReportClick = () => {
     navigate('/report-content-error');
-    setIsFeedbackOpen(false);
+    setIsModalOpen(false);
   };
 
   const handleImproveClick = () => {
@@ -34,13 +33,14 @@ function Feedback({ onClose }) {
       return;
     }
 
+    setIsLoading(true);
     try {
       const response = await fetch("http://localhost:3001/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: "Anonymous User", // Keeps sender anonymous
-          email: "no-reply@pioneerjournal.com", // Optional sender email
+          name: "Anonymous User",
+          email: "no-reply@pioneerjournal.com",
           subject: "Website Improvement Suggestion",
           message: suggestText
         }),
@@ -50,14 +50,16 @@ function Feedback({ onClose }) {
       
       if (data.success) {
         alert("Thank you for your feedback! Your suggestion has been sent.");
-        setSuggestText(''); // Clears the textarea after successful submission
-        handleCloseModal(); // Closes the modal
+        setSuggestText('');
+        handleCloseModal();
       } else {
         throw new Error(data.error || "Failed to send feedback. Please try again.");
       }
     } catch (error) {
       console.error("Error sending feedback:", error);
       alert(`Error: ${error.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -68,13 +70,14 @@ function Feedback({ onClose }) {
         onClick={handleFeedbackClick}
         tabIndex="0"
         aria-label="Open feedback modal"
+        aria-controls="feedback-modal"
       >
-        <i className="fas fa-comment"></i>
+        <i className="fas fa-comment" aria-hidden="true"></i>
         <span className="feedback-text">Feedback</span>
       </button>
-      {isFeedbackOpen && (
+      {isModalOpen && (
         <div className="feedback-modal-overlay" onClick={handleCloseModal}>
-          <div className="feedback-modal" onClick={(e) => e.stopPropagation()}>
+          <div id="feedback-modal" className="feedback-modal" onClick={(e) => e.stopPropagation()}>
             {feedbackType === null ? (
               <div className="feedback-option">
                 <h3>How can we support your research journey today?</h3>
@@ -84,7 +87,10 @@ function Feedback({ onClose }) {
             ) : (
               <div className="feedback-suggestion">
                 <h3>Suggest an Archive Improvement</h3>
-                <p>Your insights help us enhance the research archive. For general inquiries, please contact our support team.</p>
+                <p>
+                  Your insights help us enhance the research archive. For general inquiries, please contact our{' '}
+                  <Link to="/support-center">support team</Link>.
+                </p>
                 <textarea
                   value={suggestText}
                   onChange={(e) => setSuggestText(e.target.value)}
@@ -94,11 +100,16 @@ function Feedback({ onClose }) {
                 <div className="feedback-actions">
                   <button 
                     className="return-btn"
-                    onClick={() => setFeedbackType(null)}>Return
+                    onClick={() => setFeedbackType(null)}
+                  >
+                    Return
                   </button>
                   <button 
                     className="send-feedback-btn"
-                    onClick={handleSendImprovement}>Send Feedback
+                    onClick={handleSendImprovement}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Sending..." : "Send Feedback"}
                   </button>
                 </div>
                 <div className="character-counter">{suggestText.length}/500</div>
@@ -106,9 +117,10 @@ function Feedback({ onClose }) {
             )}
             <button 
               className="close-modal" 
+              aria-label="Close"
               onClick={handleCloseModal}
             >
-              <i className="fas fa-times"></i>
+              <i className="fas fa-times" aria-hidden="true"></i>
             </button>
           </div>
         </div>

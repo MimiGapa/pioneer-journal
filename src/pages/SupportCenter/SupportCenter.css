@@ -11,6 +11,7 @@ p {
 
 .support-form .form-group {
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .support-form label {
@@ -181,3 +182,47 @@ p {
 .error {
   text-align: left;
 }
+
+@media screen (max-width: 450px) {
+  .role-container {
+    gap: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .role-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .role-options input {
+    width: 30%;
+  }
+  .role-options label {
+    width: 100%;
+    text-align: left;
+  } 
+
+  .clear-sltn-btn {
+    width: 100%; 
+    text-align: end;
+  }
+}
+
+@media (min-width: 0px) {
+  .role-container {
+    display: none;
+  }
+
+  .optional {
+    display: none;
+  }
+
+  .privacy-notice {
+    display: none;
+  }
+}
+

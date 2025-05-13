@@ -126,3 +126,18 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Github repo.
+
+## [1.9.0] 2025-05-12
+
+### Added
+- Mobile feedback button.
+
+### Changed
+- Feedback modal text "support team" to link to Support Center.
+
+### Fixed
+- Mobile menu sliding panel.
+
+### Removed
+- Mobile side panel overlay.
+- Role and File Attachment form in Support Center (Temporary).

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './SupportCenter.css';
+import { toUpper } from 'lodash';
 
 function SupportCenter() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ function SupportCenter() {
     file: null
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef(null);
 
   const handleChange = (e) => {
@@ -55,7 +57,8 @@ function SupportCenter() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-
+  
+  setIsSubmitting(true);
   try {
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:3001"}/send-email`, {
       method: "POST",
@@ -74,6 +77,8 @@ function SupportCenter() {
   } catch (error) {
     console.error("Error submitting form:", error);
     alert(`Error: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
   }
 
     const firstErrorField = document.querySelector('.error');
@@ -129,7 +134,7 @@ function SupportCenter() {
           {errors.message && <span className="error-text">{errors.message}</span>}
         </div>
         <div className="form-group">
-          <label>Role <span className="optional">(Optional)</span></label>
+          <label> <span className="optional">(Optional)</span></label>
           <div className="role-container">
             <div className="role-options">
               {["Student", "Teacher", "Researcher"].map((role) => (
@@ -149,8 +154,8 @@ function SupportCenter() {
           </div>
         </div>
         <div className="form-group">
-          <label>File Attachment <span className="optional">(Optional)</span></label>
-          <input type="file" name="file" onChange={handleChange} />
+          <label> <span className="optional">(Optional)</span></label>
+          
         </div>
         <div className="privacy-notice">
           We value your privacy—only share requested details.
@@ -165,7 +170,9 @@ function SupportCenter() {
           <button 
             type="submit"
             className="submit-btn"
-            >Submit
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         </div>
       </form>

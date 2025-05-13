@@ -3,10 +3,11 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .header-content {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -14,6 +15,7 @@
   justify-content: space-between;
   padding: 1rem;
   flex-wrap: wrap;
+  z-index: auto;
 
   /* Fade & Slide Animation */
   opacity: 0;
@@ -111,26 +113,6 @@
     transition: transform 0.3s ease;
   }
 
-  .nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
-    backdrop-filter: blur(5px); /* Optional: Adds slight blur */
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 10;
-  }
-
-    /* When menu opens, show overlay */
-    .nav-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
   /* Icon Bars */
   .menu-toggle .icon-bars {
     opacity: 0;
@@ -176,19 +158,22 @@
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%; /* Start off-screen to the right */
+    right: 0;
     height: 100vh;
-    width: 380px;
+    width: 0; /* Menu is hidden by setting width to 0 */
     background-color: white;
     box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
     flex-direction: column;
-    padding: 3.5rem 1rem;
-    transition: right 0.3s ease-in-out;
-    z-index: 100;
+    padding: 3.5rem 0; /* No horizontal padding when closed */
+    overflow: hidden; /* Prevents content from being visible when closed */
+    transition: all 0.3s ease-in-out;
   }
 
   .main-nav.open .nav-links {
-    right: 0;
+    position: fixed;
+    width: 320px; /* Full width when open */
+    padding: 3.5rem 1rem; /* Restore padding when open */
+    z-index: 9998 !important;
   }
   
   .nav-links li {
@@ -208,19 +193,29 @@
   }
 
   .mobile-feedback-button {
-  background-color: transparent;
-  display: block;
-  border-top: 1px solid #f0f0f0;
-  padding: 0.75rem 1rem;
-  color: #333;
-  text-decoration: none;
-  text-align: left;
-  font-family: 'Kievit Serif Book', serif;
-  font-size: 1rem;
-  transition: color 0.2s;
+    background-color: transparent;
+    display: block;
+    border-top: 1px solid #f0f0f0;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    text-align: left;
+    font-family: 'Kievit Serif Book', serif;
+    font-size: 1rem;
+    transition: color 0.2s;
   }
 
   .mobile-feedback-button:hover {
     color: #1565c0;
+  }
+
+  .icon-bars.visible,
+  .icon-times.hidden {
+    display: inline;
+  }
+
+  .icon-bars.hidden,
+  .icon-times.visible {
+    display: inline;
   }
 }

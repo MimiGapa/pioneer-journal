@@ -22,8 +22,9 @@ import "./App.css";
 function App() {
   const location = useLocation();
   const nodeRef = useRef(null);
-  // Default to showing splash
+
   const [showSplash, setShowSplash] = useState(true);
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false); // New state
 
   useEffect(() => {
     AOS.init({
@@ -31,20 +32,16 @@ function App() {
       once: true,
       offset: 50,
     });
-    // Check if this is a refresh using Performance API
     let isRefresh = false;
-    // Try the modern Navigation API first
     if (window.performance && window.performance.getEntriesByType) {
       const navEntries = window.performance.getEntriesByType("navigation");
       if (navEntries.length > 0) {
         isRefresh = navEntries[0].type === "reload";
       }
     }
-    // Fallback to older API if needed
     if (!isRefresh && window.performance && window.performance.navigation) {
       isRefresh = window.performance.navigation.type === 1;
     }
-    // If it's a refresh, don't show splash
     if (isRefresh) {
       setShowSplash(false);
     }
@@ -54,13 +51,18 @@ function App() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // Close the feedback modal when the route changes
+  useEffect(() => {
+    setIsFeedbackModalOpen(false);
+  }, [location]);
+
   return (
     <div className="app">
       {showSplash ? (
         <SplashScreen onFinish={() => setShowSplash(false)} />
       ) : (
         <>
-          <Header />
+          <Header setFeedbackOpen={setIsFeedbackModalOpen} /> {/* Pass setter */}
           <main className="main-content">
             <SwitchTransition mode="out-in">
               <CSSTransition
@@ -93,7 +95,10 @@ function App() {
           </main>
           <Footer />
           <BackToTop />
-          <Feedback />
+          <Feedback
+            isModalOpen={isFeedbackModalOpen}           // Pass state
+            setIsModalOpen={setIsFeedbackModalOpen}     // Pass setter
+          />
         </>
       )}
     </div>
